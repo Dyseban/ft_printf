@@ -6,7 +6,7 @@
 #    By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/11/26 19:54:29 by thomasgerma      ###   ########.fr        #
+#    Updated: 2019/11/28 10:01:59 by thomasgerma      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,18 @@ CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) :
 	gcc $(LIB) $(SRCS) -I $(INCLUDES)
+	./a.out
+
+f :
+	gcc -g3 -fsanitize=address $(LIB) $(SRCS) -I $(INCLUDES)
+	./a.out
 
 clean :
 
 fclean : clean
 	rm -f $(NAME)
+	rm -rf a.out.dSYM
 
 re : fclean all

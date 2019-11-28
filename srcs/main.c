@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/11/26 19:47:16 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/11/28 10:38:18 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 int main(void)
 {
-	ft_printf("Bonsoir a toute %s et a tous");
+	printf("\n%d\n", ft_printf("Bonsoir %s a toute %u et a tous", "test", -17)ls
+
 	return (0);
 }
 

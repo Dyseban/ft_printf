@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/11/26 20:29:10 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/11/28 10:26:01 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,32 @@ int				ft_define_type(const char *str)
 		if (*str == '%' && str[1] == 'c')
 			return (1);
 		else if (*str == '%' && str[1] == 's')
-			return (1);
+			return (2);
 		else if (*str == '%' && str[1] == 'p')
-			return (1);
+			return (3);
 		else if (*str == '%' && str[1] == 'd')
-			return (1);
+			return (4);
 		else if (*str == '%' && str[1] == 'i')
-			return (1);
+			return (5);
 		else if (*str == '%' && str[1] == 'u')
-			return (1);
+			return (6);
 		else if (*str == '%' && str[1] == 'x')
-			return (1);
+			return (7);
 		else if (*str == '%' && str[1] == 'X')
-			return (1);
+			return (8);
 	}
 	return (0);
 }
 
-const char		*ft_refresh_str(const char *str, int i)
+const char		*ft_refresh_str(const char *str)
 {
-	char			*temp;
+	int				next_arg;
 
-	if (str[i])
-	{
-		temp = ft_strdup(str + i + 1);
-		if (str)
-			free((char *)str);
-		str = temp;
-	}
+	next_arg = next_arg_index(str);
+	if (str[next_arg] == '%')
+		str = str + next_arg + 2;
 	else
-	{
-		if (str)
-			free((char *)str);
-		str = NULL;
-	}
+		str = str + next_arg;
 	return (str);
 }
 
@@ -65,15 +57,19 @@ int				ft_printf(const char *str, ...)
 	int 		i;
 
 	i = 0;
+	if (!(output = ft_calloc(sizeof(char), 1)))
+		return (-1);
 	num_args = nb_args(str);
 	va_start(args, str);
 	while (*str)
 	{
-		if (!(output = ft_substr(str, 0, next_arg_index(str))))
+		if (!(output = ft_strjoin(output, ft_substr(str, 0, next_arg_index(str)))))
 			return (-1);
-		ft_putstr_fd(output, 1);
-		str = str + next_arg_index(str) + 2;
+		output = fill_arg(output, args,
+			ft_define_type(str + next_arg_index(str)));
+		str = ft_refresh_str(str);
 	}
+	ft_putstr_fd(output, 1);
 	va_end(args);
-	return (0);
+	return (ft_strlen(output));
 }
