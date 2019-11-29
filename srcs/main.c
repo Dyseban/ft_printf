@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/11/28 10:38:18 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/11/29 15:58:18 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 int main(void)
 {
-	printf("\n%d\n", ft_printf("Bonsoir %s a toute %u et a tous", "test", -17)ls
-
+	ft_printf("%x\n", 'a');
+	printf("%x\n", 'j');
 	return (0);
 }
 
@@ -29,7 +29,7 @@ int main(void)
 ** p -> whalla je sais pas
 ** d -> putnbr je pense
 ** i -> putnbr je suis quasi sur
-** u -> ben pareil ...
+** u -> ben pareil ... -> Atoi base
 ** x -> hex donc je sais pas
 ** X -> HEX DONC JE SAIS PAS (mais en majuscule je pense)
 */

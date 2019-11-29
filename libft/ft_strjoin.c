@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 13:01:40 by thgermai          #+#    #+#             */
-/*   Updated: 2019/11/28 10:24:08 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/11/29 11:32:37 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char			*ft_strjoin(char const *s1, char const *s2)
 	if (s1)
 		ft_strlcpy(str, s1, s1len + 1);
 	ft_strlcpy(str + s1len, s2, s2len + 1);
+	if (s1)
+		free((char *)s1);
 	str[s1len + s2len] = '\0';
 	return (str);
 }

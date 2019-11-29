@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/11/26 15:05:57 by thgermai         ###   ########.fr        #
+#    Updated: 2019/11/29 11:35:46 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS = ./get_next_line.c\
 	./ft_putstr_fd.c\
 	./ft_split.c\
 	./ft_itoa.c\
+	./ft_itoa_unsigned.c\
 	./ft_strmapi.c\
 	./ft_memdel.c\
 	./ft_lstnew.c\
@@ -72,7 +73,7 @@ $(NAME) : $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 clean :
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(INCLUDES:.h=.h.gch)
 
 fclean : clean
 	rm -f $(NAME)

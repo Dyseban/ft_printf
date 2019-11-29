@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_itoa_unsigned.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/11/29 14:30:55 by thgermai         ###   ########.fr       */
+/*   Created: 2019/11/08 11:40:38 by thgermai          #+#    #+#             */
+/*   Updated: 2019/11/29 11:32:52 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "stdarg.h"
-# include <stdio.h>
+char			*ft_itoa_unsigned(unsigned int n)
+{
+	char *str;
 
-# define HEXADECIMAL "0123456789ABCDEF"
-
-int			ft_printf(const char *str, ...);
-int			nb_args(const char *str);
-int			next_arg_index(const char *str);
-int			ft_define_type(const char *str);
-char		*fill_arg(char *output, va_list args, int type);
-
-#endif
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
+		return (NULL);
+	if (n < 0)
+	{
+		str[0] = '-';
+		str[1] = '\0';
+		str = ft_strjoin(str, ft_itoa(-n));
+	}
+	else if (n >= 10)
+		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n < 10 && n >= 0)
+	{
+		str[0] = n + 48;
+		str[1] = '\0';
+	}
+	return (str);
+}

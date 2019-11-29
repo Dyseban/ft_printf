@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_arg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 19:34:40 by thomasgerma       #+#    #+#             */
-/*   Updated: 2019/11/28 10:37:52 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/11/29 14:14:44 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char		*fill_arg(char *output, va_list args, int type)
 		str = va_arg(args, char *);
 		output = ft_strjoin(output, str);
 	}
-	if (type == 5)
+	if (type == 4 || type == 5)
 	{
 		i = va_arg(args, int);
 		output = ft_strjoin(output, ft_itoa(i));
@@ -70,7 +70,9 @@ char		*fill_arg(char *output, va_list args, int type)
 	if (type == 6)
 	{
 		u = va_arg(args, unsigned int);
-		output = ft_strjoin(output, ft_itoa(u));
+		output = ft_strjoin(output, ft_itoa_unsigned(u));
 	}
+	if (type == 9)
+		output = ft_strjoin(output, "%");
 	return (output);
 }
