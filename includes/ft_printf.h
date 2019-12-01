@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 14:24:20 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/01 16:50:16 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define HEXADECIMAL "0123456789ABCDEF"
+# define HEXADECIMAL "0123456789abcdef"
 # define VALID_VALUE "cspdiuxX%"
 
 int			ft_printf(const char *str, ...);

@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 14:21:37 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/01 16:53:31 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*pf_fill_unsi(va_list args, char *output)
 	unsigned int		i;
 
 	i = va_arg(args, unsigned int);
-	output = ft_strjoin(output, ft_itoa_unsigned(i));
+	output = ft_strjoin_f12(output, ft_itoa_unsigned(i));
 	return (output);
 }
 
@@ -27,7 +27,7 @@ char		*pf_fill_hexa(va_list args, char *output)
 	int		i;
 
 	i = va_arg(args, int);
-	output = ft_strjoin(output, ft_itoa_base(i, HEXADECIMAL));
+	output = ft_strjoin_f12(output, ft_itoa_base(i, HEXADECIMAL));
 	return (output);
 }
 
@@ -38,9 +38,16 @@ char		*pf_fill_HEXA(va_list args, char *output)
 
 	i = va_arg(args, int);
 	temp = ft_itoa_base(i, HEXADECIMAL);
-	i = 0;
-	while (temp[i])
-		ft_toupper(temp[i++]);
-	output = ft_strjoin(output, temp);
+	i = -1;
+	while (temp[++i])
+		temp[i] = ft_toupper(temp[i]);
+	output = ft_strjoin_f12(output, temp);
+	return (output);
+}
+
+char		*pf_fill_modulo(va_list args, char *output)
+{
+	(void)args;
+	output = ft_strjoin_f1(output, "%");
 	return (output);
 }

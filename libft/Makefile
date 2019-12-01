@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/01 12:44:52 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/01 17:23:42 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,9 @@ SRCS = ./get_next_line.c\
 	./ft_strdup.c\
 	./ft_substr.c\
 	./ft_strjoin.c\
+	./ft_strjoin_f1.c\
+	./ft_strjoin_f2.c\
+	./ft_strjoin_f12.c\
 	./ft_strtrim.c\
 	./ft_putchar_fd.c\
 	./ft_putendl_fd.c\
@@ -59,7 +62,8 @@ SRCS = ./get_next_line.c\
 	./ft_lstiter.c\
 	./ft_lstmap.c\
 	./ft_exit.c\
-	./ft_itoa_base.c
+	./ft_itoa_base.c\
+	./ft_itoa_address.c
 OBJS = $(SRCS:.c=.o)
 INCLUDES = ./libft.h
 CFLAGS = -Wall -Wextra -Werror
@@ -71,6 +75,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	ar rcs $(NAME) $(OBJS)
+	mv libft.a ..
 
 clean :
 	rm -f $(OBJS) $(INCLUDES:.h=.h.gch)

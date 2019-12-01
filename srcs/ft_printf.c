@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 15:47:04 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/01 16:51:07 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char			*redict_type(va_list args, char *output, int type)
 {
 	char *(*fptr[9])(va_list, char *);
 
+	printf("%i\n", type);
 	fptr[0] = &pf_fill_char;
 	fptr[1] = &pf_fill_str;
 	fptr[3] = &pf_fill_deci;
@@ -53,7 +54,7 @@ char			*redict_type(va_list args, char *output, int type)
 	fptr[6] = &pf_fill_hexa;
 	fptr[7] = &pf_fill_HEXA;
 	fptr[8] = &pf_fill_modulo;
-	return (output = fptr[type](args, output));
+	return (output = fptr[type - 1](args, output));
 }
 
 int				ft_printf(const char *str, ...)
@@ -70,9 +71,10 @@ int				ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (*str)
 	{
-		if (!(output = ft_strjoin(output, ft_substr(str, 0, next_arg_index(str)))))
+		if (!(output = ft_strjoin_f12(output, ft_substr(str, 0, next_arg_index(str)))))
 			return (-1);
-		output = redict_type(args, output, ft_define_type(str + next_arg_index(str)));
+		if (str[next_arg_index(str)] == '%')
+			output = redict_type(args, output, ft_define_type(str + next_arg_index(str)));
 		str = ft_refresh_str(str);
 	}
 	ft_putstr_fd(output, 1);

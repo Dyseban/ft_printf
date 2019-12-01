@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 15:44:07 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/01 17:36:23 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,22 @@
 
 int main(void)
 {
-	ft_printf("%i", 15);
-	system("leaks a.out");
+	char *str = ft_strdup("bonsoir a toute");
+	//ft_printf("add : %p -> %s\n", str, str);
+	printf("%s\n", ft_itoa_address((unsigned int)str, HEXADECIMAL));
+	printf("address : %p -> %s\n", str, str);
+//	system("leaks a.out");
 	return (0);
 }
 
 /*
-** 1 : c -> putchar
-** 2 : s -> putstr
-** 3 : p -> whalla je sais pas
-** 4 : d -> putnbr je pense
-** 5 : i -> putnbr je suis quasi sur
-** 6 : u -> ben pareil ... -> itoa base
-** 7 : x -> hex donc je sais pas
-** 8 : X -> HEX DONC JE SAIS PAS (mais en majuscule je pense)
-** 9 : % -> strjoin(output, '%')
+** 1 : c
+** 2 : s
+** 3 : p -> Il faut mettre un unsigned long et non unsigned int
+** 4 : d
+** 5 : i
+** 6 : u
+** 7 : x
+** 8 : X
+** 9 : %
 */
