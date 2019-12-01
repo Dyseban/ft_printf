@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+         #
+#    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/11/28 10:01:59 by thomasgerma      ###   ########.fr        #
+#    Updated: 2019/12/01 10:23:57 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

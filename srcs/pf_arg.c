@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 19:34:40 by thomasgerma       #+#    #+#             */
-/*   Updated: 2019/11/29 14:14:44 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/01 09:29:58 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			next_arg_index(const char *str)
 	i = 0;
 	while (*str)
 	{
-		if (ft_define_type(str))
+		if (ft_define_type(str) > 0)
 			return (i);
 		str++;
 		i++;

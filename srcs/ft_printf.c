@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/11/29 15:49:21 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/01 10:33:16 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,18 @@
 
 int				ft_define_type(const char *str)
 {
-	if (*str == '%' && str[1])
-	{
-		if (str[1] == 'c')
-			return (1);
-		else if (str[1] == 's')
-			return (2);
-		else if (str[1] == 'p')
-			return (3);
-		else if (str[1] == 'd')
-			return (4);
-		else if (str[1] == 'i')
-			return (5);
-		else if (str[1] == 'u')
-			return (6);
-		else if (str[1] == 'x')
-			return (7);
-		else if (str[1] == 'X')
-			return (8);
-		else if (str[1] == '%')
-			return (9);
-	}
-	return (0);
+	int		i;
+	char	*value;
+
+	i = 0;
+	value = ft_strdup(VALID_VALUE);
+	if (str[0] != '%')
+		return (ft_exit(-1, 1, value));
+	while (value[i] && value[i] != str[1])
+		i++;
+	if (value[i])
+		return (ft_exit(i + 1, 1, value));
+	return (ft_exit(-1, 1, value));
 }
 
 const char		*ft_refresh_str(const char *str)

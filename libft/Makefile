@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/11/29 11:35:46 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/01 10:20:45 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,9 @@ SRCS = ./get_next_line.c\
 	./ft_lstclear.c\
 	./ft_lstiter.c\
 	./ft_lstmap.c\
-
+	./ft_exit.c
 OBJS = $(SRCS:.c=.o)
-INCLUDES = ./libft.h\
-
+INCLUDES = ./libft.h
 CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)

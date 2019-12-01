@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:28:33 by thgermai          #+#    #+#             */
-/*   Updated: 2019/11/29 11:31:45 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/01 10:35:21 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#define BUFFER_SIZE 512
+# define BUFFER_SIZE 512
 
 typedef struct		s_list
 {
@@ -33,6 +33,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+int					ft_exit(int ret, int n, ...);
 int					ft_lstsize(t_list	*lst);
 int					ft_atoi(const char *str);
 int					get_next_line(int fd, char **line);
