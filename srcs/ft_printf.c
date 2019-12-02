@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 16:51:07 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/02 11:17:41 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ char			*redict_type(va_list args, char *output, int type)
 {
 	char *(*fptr[9])(va_list, char *);
 
-	printf("%i\n", type);
 	fptr[0] = &pf_fill_char;
 	fptr[1] = &pf_fill_str;
+	fptr[2] = &pf_fill_add;
 	fptr[3] = &pf_fill_deci;
 	fptr[4] = &pf_fill_int;
 	fptr[5] = &pf_fill_unsi;
 	fptr[6] = &pf_fill_hexa;
-	fptr[7] = &pf_fill_HEXA;
+	fptr[7] = &pf_fill_hexa_caps;
 	fptr[8] = &pf_fill_modulo;
 	return (output = fptr[type - 1](args, output));
 }
@@ -61,8 +61,8 @@ int				ft_printf(const char *str, ...)
 {
 	va_list		args;
 	char		*output;
-	int 		num_args;
-	int 		i;
+	int			num_args;
+	int			i;
 
 	i = 0;
 	if (!(output = ft_calloc(sizeof(char), 1)))

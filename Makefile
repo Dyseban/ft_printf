@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/01 14:25:47 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/02 11:15:09 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ f :
 clean :
 
 fclean : clean
-	rm -f $(NAME)
+	rm -f a.out
 	rm -rf a.out.dSYM
 
 re : fclean all

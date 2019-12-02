@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 16:53:31 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/02 11:17:29 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*pf_fill_hexa(va_list args, char *output)
 	return (output);
 }
 
-char		*pf_fill_HEXA(va_list args, char *output)
+char		*pf_fill_hexa_caps(va_list args, char *output)
 {
 	int		i;
 	char	*temp;

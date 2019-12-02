@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 17:08:21 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/02 14:01:27 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ char		*pf_fill_str(va_list args, char *output)
 	return (output);
 }
 
-char		*pf_fill_add(va_list args, char *ouput)
+char		*pf_fill_add(va_list args, char *output)
 {
-	char	*ptr;
+	void					*ptr;
+	char					*result;
 
-	ptr = va_arg(args, char *);
-	printf("%x", (unsigned int)ptr);
-	return (NULL);
+	ptr = va_arg(args, void *);
+	result = ft_itoa_address((unsigned long long int)ptr);
+	result = ft_strjoin_f2("0x", result);
+	return (output = ft_strjoin_f12(output, result));
 }
 
 char		*pf_fill_deci(va_list args, char *output)
@@ -45,8 +47,7 @@ char		*pf_fill_deci(va_list args, char *output)
 	int		i;
 
 	i = va_arg(args, int);
-	output = ft_strjoin_f12(output, ft_itoa(i));
-	return (output);
+	return (output = ft_strjoin_f12(output, ft_itoa(i)));
 }
 
 char		*pf_fill_int(va_list args, char *output)
@@ -54,8 +55,5 @@ char		*pf_fill_int(va_list args, char *output)
 	int		i;
 
 	i = va_arg(args, int);
-	output = ft_strjoin_f12(output, ft_itoa(i));
-	return (output);
+	return (output = ft_strjoin_f12(output, ft_itoa(i)));
 }
-
-
