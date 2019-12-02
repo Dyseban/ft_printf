@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/02 11:17:41 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/02 17:03:28 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char			*redict_type(va_list args, char *output, int type)
 	fptr[6] = &pf_fill_hexa;
 	fptr[7] = &pf_fill_hexa_caps;
 	fptr[8] = &pf_fill_modulo;
-	return (output = fptr[type - 1](args, output));
+	return (output = (*fptr[type - 1])(args, output));
 }
 
 int				ft_printf(const char *str, ...)
@@ -79,5 +79,5 @@ int				ft_printf(const char *str, ...)
 	}
 	ft_putstr_fd(output, 1);
 	va_end(args);
-	return (ft_strlen(output));
+	return (ft_exit(ft_strlen(output), 1, output));
 }

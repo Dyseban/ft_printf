@@ -6,26 +6,11 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 09:50:56 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 10:21:33 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/02 14:41:42 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void			*ft_calloc(size_t count, size_t size)
-{
-	void	*temp;
-	size_t	i;
-
-	i = -1;
-	if (!(temp = malloc(count * size)))
-		return (NULL);
-	if (!count || !size)
-		return (temp);
-	while (++i < count * size)
-		((unsigned char *)temp)[i] = '\0';
-	return (temp);
-}
 
 char			*ft_strjoin_gnl(char *s1, char *s2)
 {

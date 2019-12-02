@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 10:19:24 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/01 10:35:08 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/02 17:02:15 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_exit(int ret, int n, ...)
 	va_start(argv, n);
 	while (i < n)
 	{
-		temp = va_arg(argv, char *);
+		temp = va_arg(argv, void *);
 		ft_memdel(&temp);
 		i++;
 	}

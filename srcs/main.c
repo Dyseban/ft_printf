@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/02 14:02:31 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:55:55 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@ int main(void)
 {
 	int ret;
 	char *str = ft_strdup("bonsoir a toute");
-	ret = printf("%x\n", 12);
-	//printf("%i\n", ret);
+	ret = ft_printf("index = %i -> address : %p -> %s\n", 48, str, str);
 	free(str);
-	//system("leaks a.out");
+	system("leaks a.out");
 	return (0);
 }
 
 /*
 ** flags :
-** -
-** 0
+** - colle a droite au lieu de gauche dans la taille donne
+** 0 repli la taille inutiliser de 0
 ** .
-** *
-** taille minimal du champs
+** * arguments dans le " " -> printf("%-*.*d", 10, 20, 30);
+** taille minimal du champs donne un taille min et on complete dedans.
 */
