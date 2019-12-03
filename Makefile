@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/02 11:15:09 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/03 13:49:41 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ SRCS = ./srcs/main.c\
 		./srcs/ft_printf.c\
 		./srcs/pf_arg.c\
 		./srcs/pf_fill_1-5.c\
-		./srcs/pf_fill_6-9.c
+		./srcs/pf_fill_6-9.c\
+		./srcs/pf_parcing.c\
+		./srcs/pf_width.c
 INCLUDES = ./includes/ft_printf.h\
 			./libft/libft.h
 LIB = ./libft.a

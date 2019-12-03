@@ -6,14 +6,14 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/02 11:17:29 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/03 13:24:07 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
-char		*pf_fill_unsi(va_list args, char *output)
+char		*pf_fill_unsi(va_list args, char *output, t_param *param)
 {
 	unsigned int		i;
 
@@ -22,7 +22,7 @@ char		*pf_fill_unsi(va_list args, char *output)
 	return (output);
 }
 
-char		*pf_fill_hexa(va_list args, char *output)
+char		*pf_fill_hexa(va_list args, char *output, t_param *param)
 {
 	int		i;
 
@@ -31,7 +31,7 @@ char		*pf_fill_hexa(va_list args, char *output)
 	return (output);
 }
 
-char		*pf_fill_hexa_caps(va_list args, char *output)
+char		*pf_fill_hexa_caps(va_list args, char *output, t_param *param)
 {
 	int		i;
 	char	*temp;
@@ -45,7 +45,7 @@ char		*pf_fill_hexa_caps(va_list args, char *output)
 	return (output);
 }
 
-char		*pf_fill_modulo(va_list args, char *output)
+char		*pf_fill_modulo(va_list args, char *output, t_param *param)
 {
 	(void)args;
 	output = ft_strjoin_f1(output, "%");

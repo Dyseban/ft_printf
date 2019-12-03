@@ -6,28 +6,25 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 19:34:40 by thomasgerma       #+#    #+#             */
-/*   Updated: 2019/12/01 16:30:57 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/03 13:17:33 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-int			nb_args(const char *str)
+int				define_type(char c)
 {
-	int		nb_args;
-	char	*conver;
+	int		i;
+	char	*value;
 
-	conver = ft_strdup(VALID_VALUE);
-	nb_args = 0;
-	while (*str)
-	{
-		if (*str == '%' && ft_strchr(conver, str[1]))
-			nb_args++;
-		str++;
-	}
-	free(conver);
-	return (nb_args);
+	i = 0;
+	value = ft_strdup(VALID_VALUE);
+	while (value[i] && value[i] != c)
+		i++;
+	if (value[i])
+		return (ft_exit(i, 1, value));
+	return (ft_exit(-1, 1, value));
 }
 
 int			next_arg_index(const char *str)
@@ -37,10 +34,11 @@ int			next_arg_index(const char *str)
 	i = 0;
 	while (*str)
 	{
-		if (ft_define_type(str) > 0)
+		if (*str == '%')
 			return (i);
 		str++;
 		i++;
 	}
 	return (i);
 }
+

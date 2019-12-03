@@ -6,28 +6,12 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/02 17:03:28 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/03 13:33:26 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
-
-int				ft_define_type(const char *str)
-{
-	int		i;
-	char	*value;
-
-	i = 0;
-	value = ft_strdup(VALID_VALUE);
-	if (str[0] != '%')
-		return (ft_exit(-1, 1, value));
-	while (value[i] && value[i] != str[1])
-		i++;
-	if (value[i])
-		return (ft_exit(i + 1, 1, value));
-	return (ft_exit(-1, 1, value));
-}
 
 const char		*ft_refresh_str(const char *str)
 {
@@ -41,10 +25,16 @@ const char		*ft_refresh_str(const char *str)
 	return (str);
 }
 
-char			*redict_type(va_list args, char *output, int type)
+char			*redict_type(va_list args, char *output, t_param *param)
 {
-	char *(*fptr[9])(va_list, char *);
+	char *(*fptr[9])(va_list, char *, t_param *);
 
+	if (param->specifier < 0)
+	{
+		printf("wrong specifier\n");
+		free(param);
+		return (NULL);
+	}
 	fptr[0] = &pf_fill_char;
 	fptr[1] = &pf_fill_str;
 	fptr[2] = &pf_fill_add;
@@ -54,27 +44,26 @@ char			*redict_type(va_list args, char *output, int type)
 	fptr[6] = &pf_fill_hexa;
 	fptr[7] = &pf_fill_hexa_caps;
 	fptr[8] = &pf_fill_modulo;
-	return (output = (*fptr[type - 1])(args, output));
+	return (output = (*fptr[param->specifier])(args, output, param));
 }
 
 int				ft_printf(const char *str, ...)
 {
 	va_list		args;
 	char		*output;
-	int			num_args;
 	int			i;
 
 	i = 0;
 	if (!(output = ft_calloc(sizeof(char), 1)))
 		return (-1);
-	num_args = nb_args(str);
 	va_start(args, str);
 	while (*str)
 	{
 		if (!(output = ft_strjoin_f12(output, ft_substr(str, 0, next_arg_index(str)))))
-			return (-1);
+			return (ft_exit(-1, 1, output));
 		if (str[next_arg_index(str)] == '%')
-			output = redict_type(args, output, ft_define_type(str + next_arg_index(str)));
+			if (!(output = redict_type(args, output, parcing_param(str + next_arg_index(str)))))
+				return (ft_exit(-1, 1, output));
 		str = ft_refresh_str(str);
 	}
 	ft_putstr_fd(output, 1);
