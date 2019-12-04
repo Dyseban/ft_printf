@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/03 13:33:26 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 10:40:34 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ const char		*ft_refresh_str(const char *str)
 
 	next_arg = next_arg_index(str);
 	if (str[next_arg] == '%')
-		str = str + next_arg + 2;
-	else
-		str = str + next_arg;
-	return (str);
+	{
+		next_arg++;
+		while (str[next_arg] && define_type(str[next_arg]) == -1)
+			next_arg++;
+		next_arg++;
+	}
+	return (str + next_arg);
 }
 
 char			*redict_type(va_list args, char *output, t_param *param)
@@ -31,7 +34,6 @@ char			*redict_type(va_list args, char *output, t_param *param)
 
 	if (param->specifier < 0)
 	{
-		printf("wrong specifier\n");
 		free(param);
 		return (NULL);
 	}

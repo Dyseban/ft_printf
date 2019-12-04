@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/03 13:50:18 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 10:39:31 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,16 @@ char		*pf_fill_str(va_list args, char *output, t_param *param)
 	char	*str;
 
 	str = va_arg(args, char *);
-	output = ft_strjoin_f1(output, str);
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			str = fill_width_left(str, param);
+		else
+			str = fill_width_right(str, param);
+		output = ft_strjoin_f12(output, str);
+	}
+	else
+		output = ft_strjoin_f1(output, str);
 	return (output);
 }
 

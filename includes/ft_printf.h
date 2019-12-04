@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/03 14:07:38 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 11:13:53 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_param
 
 int			ft_printf(const char *str, ...);
 int			next_arg_index(const char *str);
+const char	*ft_refresh_str(const char *str);
 int			define_type(char c);
 
 t_param		*parcing_param(const char *str);
@@ -46,7 +47,7 @@ char		*pf_fill_hexa(va_list args, char *output, t_param *param);
 char		*pf_fill_hexa_caps(va_list args, char *output, t_param *param);
 char		*pf_fill_modulo(va_list args, char *output, t_param *param);
 
-char		*fill_width_false(char *str, t_param *param);
-char		*fill_width_true(char *str, t_param *param);
+char		*fill_width_left(char *str, t_param *param);
+char		*fill_width_right(char *str, t_param *param);
 
 #endif

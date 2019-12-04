@@ -33,12 +33,12 @@ t_param		*parcing_param(const char *str)
 	t_param		*param;
 
 	param = set_put_param();
-	flags = ft_strdup(VALID_FLAGS);
 	i = 0;
 	if (str[i] != '%')
 		return (NULL);
+	flags = ft_strdup(VALID_FLAGS);
 	i++;
-	while (ft_strchr(flags, str[i]) || ft_isdigit(str[i]))
+	while (ft_find_in(flags, str[i]) || ft_isdigit(str[i]))
 	{
 		if (str[i] == '-')
 			param->justify = LEFT;

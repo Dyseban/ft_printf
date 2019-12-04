@@ -6,12 +6,13 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/01 17:23:42 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/04 10:07:53 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 SRCS = ./get_next_line.c\
+	./ft_find_in.c\
 	./ft_atoi.c\
    	./ft_memchr.c\
 	./ft_strlen.c\
@@ -75,7 +76,6 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-	mv libft.a ..
 
 clean :
 	rm -f $(OBJS) $(INCLUDES:.h=.h.gch)

@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/03 13:49:41 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/04 09:58:37 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,18 @@ SRCS = ./srcs/main.c\
 		./srcs/pf_width.c
 INCLUDES = ./includes/ft_printf.h\
 			./libft/libft.h
-LIB = ./libft.a
+LIB = ./libft/libft.a
 CFLAGS = -Wall -Wextra -Werror -g3
 
 all : $(NAME)
 
 $(NAME) :
+	make -C libft
 	gcc $(LIB) $(SRCS) -I $(INCLUDES)
 	./a.out
 
 f :
+	make -C libft
 	gcc -g3 -fsanitize=address $(LIB) $(SRCS) -I $(INCLUDES)
 	./a.out
 

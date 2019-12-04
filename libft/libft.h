@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:28:33 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/03 10:52:54 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 10:07:30 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+int					ft_find_in(char *str, char c);
 int					ft_exit(int ret, int n, ...);
 int					ft_lstsize(t_list	*lst);
 int					ft_atoi(const char *str);
