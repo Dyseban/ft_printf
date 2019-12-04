@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 11:13:53 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 14:45:48 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_param
 {
 	int		specifier;
 	int		width;
+	int		precision;
 	int		justify;
 	char	fill;
 }				t_param;

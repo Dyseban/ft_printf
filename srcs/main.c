@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 11:16:16 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:15:07 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ int main(void)
 	////////////	test section	////////////
 
 	char *str = ft_strdup("Salut a toute et a tous");
-	ft_printf("\n%-50s --|\n",str);
+	ft_printf("%10.50-s --|\n",str);
+	//printf("\n%-050s --|\n",str);
 	free(str);
 
 	////////////	test section	////////////
-	printf("\n\n|----		end		----|\n\n");
+	printf("\n|----		end		----|\n\n");
 	//system("leaks a.out");
 	return (0);
 }
