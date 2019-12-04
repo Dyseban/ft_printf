@@ -27,7 +27,15 @@ t_param		*set_put_param(void)
 	return (param);
 }
 
-void		assisning_param(const char *str, t_param **param)
+int			get_value(va_list args)
+{
+	int		value;
+
+	return (value = va_arg(args, int));
+
+}
+
+void		assigning_param(const char *str, t_param **param, va_list args)
 {
 	char		*flags;
 
@@ -38,12 +46,17 @@ void		assisning_param(const char *str, t_param **param)
 			(*param)->justify = LEFT;
 		else if (*str == '.')
 		{
-			(*param)->precision = ft_atoi(++str);
+			if (*(str + 1) == '*')
+				(*param)->precision = get_value(args);
+			else
+				(*param)->precision = ft_atoi(++str);
 			while (ft_isdigit(*(str + 1)))
 				str++;
 		}
 		else if (*str == '0' && !(*param)->width)
 			(*param)->fill = '0';
+		else if (*str == '*' && !(*param)->width)
+			(*param)->width = get_value(args);
 		else if (!(*param)->width)
 			(*param)->width = ft_atoi(str);
 		str++;
@@ -52,7 +65,7 @@ void		assisning_param(const char *str, t_param **param)
 	free(flags);
 }
 
-t_param		*parcing_param(const char *str)
+t_param		*parcing_param(const char *str, va_list args)
 {
 	t_param		*param;
 
@@ -61,7 +74,7 @@ t_param		*parcing_param(const char *str)
 	if(!(param = set_put_param()))
 		return (NULL);
 	str++;
-	assisning_param(str, &param);
+	assigning_param(str, &param, args);
 	if (param->fill == '0' && param->justify == LEFT)
 		param->fill = ' ';
 	printf("precision : %d\nwidth : %d\njustify : %d\nfill : %d\nspecifier : %d\n", param->precision, param->width, param->justify, param->fill, param->specifier);

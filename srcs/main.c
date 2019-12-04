@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 15:15:07 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 19:28:49 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int main(void)
 	////////////	test section	////////////
 
 	char *str = ft_strdup("Salut a toute et a tous");
-	ft_printf("%10.50-s --|\n",str);
-	//printf("\n%-050s --|\n",str);
+	ft_printf("\nsalut |%5c --|\n", 'c');
 	free(str);
 
 	////////////	test section	////////////

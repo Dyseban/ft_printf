@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
+#    By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/04 14:36:23 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/04 19:41:19 by thomasgerma      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,10 @@ f :
 
 clean :
 
-fclean : clean
+clean libft :
+	make fclean -C libft
+
+fclean : clean clean libft
 	rm -f a.out
 	rm -rf a.out.dSYM
 

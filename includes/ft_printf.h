@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 14:45:48 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 18:43:16 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			next_arg_index(const char *str);
 const char	*ft_refresh_str(const char *str);
 int			define_type(char c);
 
-t_param		*parcing_param(const char *str);
+t_param		*parcing_param(const char *str, va_list args);
 
 char		*pf_fill_char(va_list args, char *output, t_param *param);
 char		*pf_fill_str(va_list args, char *output, t_param *param);

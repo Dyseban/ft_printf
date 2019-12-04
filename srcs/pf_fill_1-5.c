@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_fill_1-5.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 11:48:21 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 19:33:02 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,17 @@
 char		*pf_fill_char(va_list args, char *output, t_param *param)
 {
 	char	c;
+	char	*str;
 
 	c = va_arg(args, int);
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			str = fill_width_left(&c, param);
+		else
+			str = fill_width_right(&c, param);
+		output = ft_strjoin_f1(output, &c);
+	}
 	output = ft_strjoin_f1(output, &c);
 	return (output);
 }

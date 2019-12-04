@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 10:40:34 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/04 18:43:50 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ int				ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (*str)
 	{
-		if (!(output = ft_strjoin_f12(output, ft_substr(str, 0, next_arg_index(str)))))
+		if (!(output = ft_strjoin_f12(output,
+			ft_substr(str, 0, next_arg_index(str)))))
 			return (ft_exit(-1, 1, output));
 		if (str[next_arg_index(str)] == '%')
-			if (!(output = redict_type(args, output, parcing_param(str + next_arg_index(str)))))
+			if (!(output = redict_type(args, output,
+				parcing_param(str + next_arg_index(str), args))))
 				return (ft_exit(-1, 1, output));
 		str = ft_refresh_str(str);
 	}
