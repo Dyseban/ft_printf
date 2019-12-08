@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 14:08:04 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/08 17:29:02 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,19 @@ char		*pf_fill_add(va_list args, char *output, t_param *param)
 	char					*result;
 
 	ptr = va_arg(args, void *);
+	if (!ptr)
+		return (result = ft_strdup("0x0"));
 	result = ft_itoa_address((unsigned long long int)ptr);
 	if (param->precision)
 		result = fill_precision(result, param);
 	result = ft_strjoin_f2("0x", result);
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			result = fill_width_left(result, param);
+		else
+			result = fill_width_right(result, param);
+	}
 	free(param);
 	return (output = ft_strjoin_f12(output, result));
 }

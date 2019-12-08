@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/08 13:34:55 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/08 17:43:34 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,11 @@ f :
 	make -C libft
 	gcc -g3 -fsanitize=address $(LIB) $(SRCS) -I $(INCLUDES)
 	./a.out
+
+git : fclean
+	git add *
+	git commit -m "push"
+	git push
 
 clean :
 

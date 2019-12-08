@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 14:27:05 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/08 17:40:01 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
+
+void		test_func_add(char *str)
+{
+	int ret;
+	int ret2;
+	char *temp;
+
+	temp = ft_strdup("Bonsoir a toute et a tous");
+	printf("flags : %s", str);
+	ft_printf("my output	: ");
+	ret = ft_printf(str, (unsigned int)temp);
+	printf("real output	: ");
+	ret2 = printf(str, (unsigned int)temp);
+	printf("my ret		: %d\n", ret);
+	printf("real ret	: %d\n", ret2);
+	printf("---	**  **	---\n");
+	free(temp);
+}
 
 void		test_func_str(char *str)
 {
@@ -85,11 +103,29 @@ void		test_str(void)
 	printf("--- FINISHED TESTING STR ---\n");
 }
 
+void		test_add(void)
+{
+	printf("--- START TESTING ADD ---\n");
+	test_func_add("%p-|\n");
+	test_func_add("%20p-|\n");
+	test_func_add("%020p-|\n");
+	test_func_add("%-20p-|\n");
+	test_func_add("%-020p-|\n");
+	test_func_add("%.25p-|\n");
+	test_func_add("%10.25p-|\n");
+	test_func_add("%10.8p-|\n");
+	printf("--- FINISHED TESTING ADD ---\n");
+}
+
 int main(void)
 {
 	printf("\n|----		ft_print	----|\n\n");
-	////////////	test section	////////////
-	test_str();
+	// ////////////	test section	////////////
+
+	//test_add();
+	char *str = ft_strdup()
+	printf("%10.8p\n", )
+
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
 	system("leaks a.out");
