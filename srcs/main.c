@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 17:40:01 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/08 17:46:25 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,9 @@ int main(void)
 	// ////////////	test section	////////////
 
 	//test_add();
-	char *str = ft_strdup()
-	printf("%10.8p\n", )
+	char *str = ft_strdup("bonsoir a toute");
+	printf("%10.8p\n", str);
+	free(str);
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
