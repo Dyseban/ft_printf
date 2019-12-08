@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 11:10:20 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 18:43:50 by thomasgerma      ###   ########.fr       */
+/*   Created: 2019/12/08 11:20:40 by thgermai          #+#    #+#             */
+/*   Updated: 2019/12/08 13:52:13 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

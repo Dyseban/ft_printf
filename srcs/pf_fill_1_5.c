@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_fill_1-5.c                                      :+:      :+:    :+:   */
+/*   pf_fill_1_5.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 09:55:53 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/08 14:08:04 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,34 @@ char		*pf_fill_char(va_list args, char *output, t_param *param)
 			str = fill_width_left(str, param);
 		else
 			str = fill_width_right(str, param);
-		output = ft_strjoin_f12(output, str);
 	}
-	else
-		output = ft_strjoin_f12(output, str);
-	return (output);
+	free(param);
+	return (output = ft_strjoin_f12(output, str));
 }
 
 char		*pf_fill_str(va_list args, char *output, t_param *param)
 {
 	char	*str;
+	char	*temp;
 
 	str = va_arg(args, char *);
+	if (param->precision != -1 && param->precision < (int)ft_strlen(str))
+	{
+		str = ft_substr(str, 0, param->precision);
+		temp = ft_strdup(str);
+		free(str);
+	}
+	else
+		temp = ft_strdup(str);
 	if (param->width)
 	{
 		if (param->justify == LEFT)
-			str = fill_width_left(str, param);
+			temp = fill_width_left(temp, param);
 		else
-			str = fill_width_right(str, param);
-		output = ft_strjoin_f12(output, str);
+			temp = fill_width_right(temp, param);
 	}
-	else
-		output = ft_strjoin_f1(output, str);
-	return (output);
+	free(param);
+	return (output = ft_strjoin_f12(output, temp));
 }
 
 char		*pf_fill_add(va_list args, char *output, t_param *param)
@@ -64,6 +69,7 @@ char		*pf_fill_add(va_list args, char *output, t_param *param)
 	if (param->precision)
 		result = fill_precision(result, param);
 	result = ft_strjoin_f2("0x", result);
+	free(param);
 	return (output = ft_strjoin_f12(output, result));
 }
 
@@ -76,6 +82,7 @@ char		*pf_fill_deci(va_list args, char *output, t_param *param)
 	num = ft_itoa(i);
 	if (param->precision)
 		num = fill_precision(num, param);
+	free(param);
 	return (output = ft_strjoin_f12(output, num));
 }
 
@@ -88,5 +95,6 @@ char		*pf_fill_int(va_list args, char *output, t_param *param)
 	num = ft_itoa(i);
 	if (param->precision)
 		num = fill_precision(num, param);
+	free(param);
 	return (output = ft_strjoin_f12(output, num));
 }

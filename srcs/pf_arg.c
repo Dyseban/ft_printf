@@ -6,14 +6,14 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 19:34:40 by thomasgerma       #+#    #+#             */
-/*   Updated: 2019/12/03 13:17:33 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/08 11:21:30 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-int				define_type(char c)
+int			define_type(char c)
 {
 	int		i;
 	char	*value;
@@ -41,4 +41,3 @@ int			next_arg_index(const char *str)
 	}
 	return (i);
 }
-

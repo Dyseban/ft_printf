@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_parcing.c                                        :+:      :+:    :+:   */
+/*   pf_parcing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:16 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/03 10:59:35 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/08 14:10:13 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ t_param		*set_put_param(void)
 {
 	t_param *param;
 
-	if(!(param = malloc(sizeof(t_param))))
+	if (!(param = malloc(sizeof(t_param))))
 		return (NULL);
 	param->specifier = 0;
-	param->precision = 0;
+	param->precision = -1;
 	param->width = 0;
 	param->justify = RIGHT;
 	param->fill = ' ';
@@ -32,7 +32,6 @@ int			get_value(va_list args)
 	int		value;
 
 	return (value = va_arg(args, int));
-
 }
 
 void		assigning_param(const char *str, t_param **param, va_list args)
@@ -49,7 +48,7 @@ void		assigning_param(const char *str, t_param **param, va_list args)
 			if (*(str + 1) == '*')
 				(*param)->precision = get_value(args);
 			else
-				(*param)->precision = ft_atoi(++str);
+				(*param)->precision = ft_atoi(str + 1);
 			while (ft_isdigit(*(str + 1)))
 				str++;
 		}
@@ -71,11 +70,12 @@ t_param		*parcing_param(const char *str, va_list args)
 
 	if (*str != '%')
 		return (NULL);
-	if(!(param = set_put_param()))
+	if (!(param = set_put_param()))
 		return (NULL);
 	str++;
 	assigning_param(str, &param, args);
 	if (param->fill == '0' && param->justify == LEFT)
 		param->fill = ' ';
+	//printf("precision : %d\nwidth : %d\njustify : %d\nfill : %d\nspecifier : %d\n",param->precision, param->width, param->justify, param->fill, param->specifier);
 	return (param);
 }

@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/08 09:23:23 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/08 13:34:55 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = ft_printf
 SRCS = ./srcs/main.c\
 		./srcs/ft_printf.c\
 		./srcs/pf_arg.c\
-		./srcs/pf_fill_1-5.c\
-		./srcs/pf_fill_6-9.c\
+		./srcs/pf_fill_1_5.c\
+		./srcs/pf_fill_6_9.c\
 		./srcs/pf_parcing.c\
 		./srcs/pf_width.c\
 		./srcs/pf_precision.c
@@ -28,7 +28,7 @@ all : $(NAME)
 
 $(NAME) :
 	make -C libft
-	gcc $(LIB) $(SRCS) -I $(INCLUDES)
+	gcc $(CFLAGS) $(LIB) $(SRCS) -I $(INCLUDES)
 	./a.out
 
 f :
