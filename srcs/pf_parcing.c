@@ -77,6 +77,5 @@ t_param		*parcing_param(const char *str, va_list args)
 	assigning_param(str, &param, args);
 	if (param->fill == '0' && param->justify == LEFT)
 		param->fill = ' ';
-	printf("precision : %d\nwidth : %d\njustify : %d\nfill : %d\nspecifier : %d\n", param->precision, param->width, param->justify, param->fill, param->specifier);
 	return (param);
 }

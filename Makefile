@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+         #
+#    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/04 19:41:19 by thomasgerma      ###   ########.fr        #
+#    Updated: 2019/12/08 09:23:23 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS = ./srcs/main.c\
 		./srcs/pf_fill_1-5.c\
 		./srcs/pf_fill_6-9.c\
 		./srcs/pf_parcing.c\
-		./srcs/pf_width.c
+		./srcs/pf_width.c\
+		./srcs/pf_precision.c
 INCLUDES = ./includes/ft_printf.h\
 			./libft/libft.h
 LIB = ./libft/libft.a

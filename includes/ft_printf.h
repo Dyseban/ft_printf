@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 18:43:16 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/08 09:42:53 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ char		*pf_fill_modulo(va_list args, char *output, t_param *param);
 
 char		*fill_width_left(char *str, t_param *param);
 char		*fill_width_right(char *str, t_param *param);
+char		*fill_precision(char *num, t_param *param);
 
 #endif

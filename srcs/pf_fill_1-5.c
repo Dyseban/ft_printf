@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_fill_1-5.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 19:33:02 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/08 09:55:53 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,21 @@ char		*pf_fill_char(va_list args, char *output, t_param *param)
 	char	c;
 	char	*str;
 
+	if (!(str = malloc(sizeof(char) * 2)))
+		return (NULL);
 	c = va_arg(args, int);
+	str[0] = c;
+	str[1] = '\0';
 	if (param->width)
 	{
 		if (param->justify == LEFT)
-			str = fill_width_left(&c, param);
+			str = fill_width_left(str, param);
 		else
-			str = fill_width_right(&c, param);
-		output = ft_strjoin_f1(output, &c);
+			str = fill_width_right(str, param);
+		output = ft_strjoin_f12(output, str);
 	}
-	output = ft_strjoin_f1(output, &c);
+	else
+		output = ft_strjoin_f12(output, str);
 	return (output);
 }
 
@@ -56,6 +61,8 @@ char		*pf_fill_add(va_list args, char *output, t_param *param)
 
 	ptr = va_arg(args, void *);
 	result = ft_itoa_address((unsigned long long int)ptr);
+	if (param->precision)
+		result = fill_precision(result, param);
 	result = ft_strjoin_f2("0x", result);
 	return (output = ft_strjoin_f12(output, result));
 }
@@ -63,15 +70,23 @@ char		*pf_fill_add(va_list args, char *output, t_param *param)
 char		*pf_fill_deci(va_list args, char *output, t_param *param)
 {
 	int		i;
+	char	*num;
 
 	i = va_arg(args, int);
-	return (output = ft_strjoin_f12(output, ft_itoa(i)));
+	num = ft_itoa(i);
+	if (param->precision)
+		num = fill_precision(num, param);
+	return (output = ft_strjoin_f12(output, num));
 }
 
 char		*pf_fill_int(va_list args, char *output, t_param *param)
 {
 	int		i;
+	char	*num;
 
 	i = va_arg(args, int);
-	return (output = ft_strjoin_f12(output, ft_itoa(i)));
+	num = ft_itoa(i);
+	if (param->precision)
+		num = fill_precision(num, param);
+	return (output = ft_strjoin_f12(output, num));
 }
