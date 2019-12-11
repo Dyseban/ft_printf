@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 17:46:25 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/11 13:53:11 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int main(void)
 
 	//test_add();
 	char *str = ft_strdup("bonsoir a toute");
-	printf("%10.8p\n", str);
+
 	free(str);
 
 	////////////	test section	////////////
