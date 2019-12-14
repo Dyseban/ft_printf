@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 13:40:01 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 13:49:46 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int				pf_fill_hexa_caps(va_list args, t_param *param)
 	int		i;
 	char	*num;
 
+	printf("test");
 	i = va_arg(args, int);
 	num = ft_itoa_base(i, HEXADECIMAL);
 	i = -1;
