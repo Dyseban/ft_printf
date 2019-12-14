@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 19:34:40 by thomasgerma       #+#    #+#             */
-/*   Updated: 2019/12/14 09:59:38 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:33:52 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int			define_type(char c)
 
 	i = 0;
 	value = ft_strdup(VALID_VALUE);
+//	printf("\nadd : %p\n", value);
 	while (value[i] && value[i] != c)
 		i++;
 	if (value[i])

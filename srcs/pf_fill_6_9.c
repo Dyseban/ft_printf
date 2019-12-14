@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 14:45:01 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 16:30:01 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				pf_fill_unsi(va_list args, t_param *param)
 
 	i = va_arg(args, unsigned int);
 	num = ft_itoa_unsigned(i);
-	if (param->precision)
+	if (param->precision != -1)
 		num = fill_precision(num, param);
 	if (param->width)
 	{
@@ -39,7 +39,7 @@ int				pf_fill_hexa(va_list args, t_param *param)
 
 	i = va_arg(args, int);
 	num = ft_itoa_base(i, HEXADECIMAL);
-	if (param->precision)
+	if (param->precision != -1)
 		num = fill_precision(num, param);
 	if (param->width)
 	{
@@ -62,7 +62,7 @@ int				pf_fill_hexa_caps(va_list args, t_param *param)
 	i = -1;
 	while (num[++i])
 		num[i] = ft_toupper(num[i]);
-	if (param->precision)
+	if (param->precision != -1)
 		num = fill_precision(num, param);
 	if (param->width)
 	{

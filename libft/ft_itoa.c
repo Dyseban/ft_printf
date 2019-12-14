@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:40:38 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/02 17:17:49 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:48:01 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ char			*ft_itoa(int n)
 		str = ft_strjoin_f12(str, ft_itoa(-n));
 	}
 	else if (n >= 10)
+	{
+		free(str);
 		str = ft_strjoin_f12(ft_itoa(n / 10), ft_itoa(n % 10));
+	}
 	else if (n < 10 && n >= 0)
 	{
 		str[0] = n + 48;

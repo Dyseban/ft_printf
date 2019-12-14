@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:16 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 09:59:32 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:26:49 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void		assigning_param(const char *str, t_param **param, va_list args)
 			(*param)->width = ft_atoi(str);
 		str++;
 	}
-	(*param)->specifier = define_type(*str);
 	free(flags);
+	(*param)->specifier = define_type(*str);
 }
 
 t_param		*parcing_param(const char *str, va_list args)
