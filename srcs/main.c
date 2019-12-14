@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/11 13:53:11 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/14 09:04:14 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,16 @@ int main(void)
 
 	//test_add();
 	char *str = ft_strdup("bonsoir a toute");
-
+	test_add();
+	test_c();
+	test_str();
+	//ft_printf("%25s\n", str);
+	//printf("%25s\n", str);
 	free(str);
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
-	system("leaks a.out");
+//	system("leaks a.out");
 	return (0);
 }
 
