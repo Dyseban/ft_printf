@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 11:20:40 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 13:41:03 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 14:50:55 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,23 @@ int				ft_printf(const char *str, ...)
 	va_list		args;
 	char		*output;
 	int			i;
+	int			j;
 
+	j = 0;
 	i = 0;
-	if (!(output = ft_calloc(sizeof(char), 1)))
-		return (-1);
+	output = NULL;
 	va_start(args, str);
 	while (*str)
 	{
-		if (!(output = ft_strjoin_f12(output,
-			ft_substr(str, 0, next_arg_index(str)))))
-			return (ft_exit(-1, 1, output));
+		if (output)
+			free(output);
+		if (!(output = ft_substr(str, 0, next_arg_index(str))))
+			return (ft_exit(-1, 0));
 		i += ft_strlen(output);
 		ft_putstr_fd(output, 1);
 		if (str[next_arg_index(str)] == '%')
-			i += redict_type(args, parcing_param(str + next_arg_index(str), args));
+			if ((j = redict_type(args, parcing_param(str + next_arg_index(str), args))) >= 0)
+				i += j;
 		str = ft_refresh_str(str);
 	}
 	va_end(args);

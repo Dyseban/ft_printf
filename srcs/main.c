@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 13:42:46 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 14:50:59 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,20 +123,22 @@ int main(void)
 	printf("\n|----		ft_print	----|\n\n");
 	// ////////////	test section	////////////
 
-	char *param = ft_strdup("%010d -|- %010i -|- %015u -|- %015x -|- %015X\n");
-	int num = -189;
+	// char *param = ft_strdup("%010d -|- %010i -|- %015u -|- %015x -|- %015X\n");
+	// int num = -189;
+	// int ret1;
+	// int ret2;
 
-	printf("---	my printf	---\n");
-	ft_printf(param, num, num, num, num, num);
-	printf("---	real print	---\n");
-	printf(param, num, num, num , num, num);
-
+	// printf("---	my printf	---\n");
+	// ret1 =ft_printf(param, num, num, num, num, num);
+	// printf("---	real print	---\n");
+	// ret2 = printf(param, num, num, num , num, num);
+	// printf("my ret : %d -|- real ret : %d\n", ret1, ret2);
 	test_add();
 	test_c();
 	test_str();
-
-
-	free(param);
+	ft_printf("%s", "et a tous");
+//
+	//free(param);
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
 	system("leaks a.out");
