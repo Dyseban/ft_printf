@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:28:33 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/04 10:07:30 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 10:52:36 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strdup(const char *s1);
 char				*ft_itoa(int n);
 char				*ft_itoa_unsigned(unsigned int n);
-char				*ft_itoa_base(int n, char *base);
+char				*ft_itoa_base(unsigned int n, char *base);
 char				*ft_itoa_address(unsigned long long int n);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);

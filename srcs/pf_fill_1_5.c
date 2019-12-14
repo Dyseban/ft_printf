@@ -6,20 +6,19 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 17:29:02 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 13:41:58 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
-char		*pf_fill_char(va_list args, char *output, t_param *param)
+int				pf_fill_char(va_list args, t_param *param)
 {
 	char	c;
 	char	*str;
 
 	if (!(str = malloc(sizeof(char) * 2)))
-		return (NULL);
+		return (ft_exit(-1, 1, param));
 	c = va_arg(args, int);
 	str[0] = c;
 	str[1] = '\0';
@@ -30,11 +29,11 @@ char		*pf_fill_char(va_list args, char *output, t_param *param)
 		else
 			str = fill_width_right(str, param);
 	}
-	free(param);
-	return (output = ft_strjoin_f12(output, str));
+	ft_putstr_fd(str, 1);
+	return (ft_exit(ft_strlen(str), 2, str, param));
 }
 
-char		*pf_fill_str(va_list args, char *output, t_param *param)
+int				pf_fill_str(va_list args, t_param *param)
 {
 	char	*str;
 	char	*temp;
@@ -55,18 +54,21 @@ char		*pf_fill_str(va_list args, char *output, t_param *param)
 		else
 			temp = fill_width_right(temp, param);
 	}
-	free(param);
-	return (output = ft_strjoin_f12(output, temp));
+	ft_putstr_fd(temp, 1);
+	return (ft_exit(ft_strlen(temp), 2, temp, param));
 }
 
-char		*pf_fill_add(va_list args, char *output, t_param *param)
+int				pf_fill_add(va_list args, t_param *param)
 {
 	void					*ptr;
 	char					*result;
 
 	ptr = va_arg(args, void *);
 	if (!ptr)
-		return (result = ft_strdup("0x0"));
+	{
+		ft_putstr_fd("0x0", 1);
+		return (ft_exit(3, 1, param));
+	}
 	result = ft_itoa_address((unsigned long long int)ptr);
 	if (param->precision)
 		result = fill_precision(result, param);
@@ -78,32 +80,64 @@ char		*pf_fill_add(va_list args, char *output, t_param *param)
 		else
 			result = fill_width_right(result, param);
 	}
-	free(param);
-	return (output = ft_strjoin_f12(output, result));
+	ft_putstr_fd(result, 1);
+	return (ft_exit(ft_strlen(result), 2, result, param));
 }
 
-char		*pf_fill_deci(va_list args, char *output, t_param *param)
+int				pf_fill_deci(va_list args, t_param *param)
 {
 	int		i;
+	int		neg;
 	char	*num;
 
-	i = va_arg(args, int);
+	neg = 0;
+	if ((i = va_arg(args, int)) < 0)
+	{
+		i *= -1;
+		neg = 1;
+		param->width -= 1;
+	}
 	num = ft_itoa(i);
 	if (param->precision)
 		num = fill_precision(num, param);
-	free(param);
-	return (output = ft_strjoin_f12(output, num));
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			num = fill_width_left(num, param);
+		else
+			num = fill_width_right(num, param);
+	}
+	if (neg)
+		num = ft_strjoin_f2("-", num);
+	ft_putstr_fd(num, 1);
+	return (ft_exit(ft_strlen(num), 2, num, param));
 }
 
-char		*pf_fill_int(va_list args, char *output, t_param *param)
+int				pf_fill_int(va_list args, t_param *param)
 {
 	int		i;
+	int		neg;
 	char	*num;
 
-	i = va_arg(args, int);
+	neg = 0;
+	if ((i = va_arg(args, int)) < 0)
+	{
+		i *= -1;
+		neg = 1;
+		param->width -= 1;
+	}
 	num = ft_itoa(i);
 	if (param->precision)
 		num = fill_precision(num, param);
-	free(param);
-	return (output = ft_strjoin_f12(output, num));
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			num = fill_width_left(num, param);
+		else
+			num = fill_width_right(num, param);
+	}
+	if (neg)
+		num = ft_strjoin_f2("-", num);
+	ft_putstr_fd(num, 1);
+	return (ft_exit(ft_strlen(num), 2, num, param));
 }

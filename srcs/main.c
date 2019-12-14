@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 09:04:14 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 13:42:46 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,24 +117,50 @@ void		test_add(void)
 	printf("--- FINISHED TESTING ADD ---\n");
 }
 
+
 int main(void)
 {
 	printf("\n|----		ft_print	----|\n\n");
 	// ////////////	test section	////////////
 
-	//test_add();
-	char *str = ft_strdup("bonsoir a toute");
+	char *param = ft_strdup("%010d -|- %010i -|- %015u -|- %015x -|- %015X\n");
+	int num = -189;
+
+	printf("---	my printf	---\n");
+	ft_printf(param, num, num, num, num, num);
+	printf("---	real print	---\n");
+	printf(param, num, num, num , num, num);
+
 	test_add();
 	test_c();
 	test_str();
-	//ft_printf("%25s\n", str);
-	//printf("%25s\n", str);
-	free(str);
 
+
+	free(param);
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
-//	system("leaks a.out");
+	system("leaks a.out");
 	return (0);
 }
 
+/* cheking
+** > 0
+** < 0
+** = 0
+** min value
+** max value
+*/
+
 //printf("precision : %d\nwidth : %d\njustify : %d\nfill : %d\nspecifier : %d\n",param->precision, param->width, param->justify, param->fill, param->specifier);
+
+/* to check :
+** c
+** s
+** p
+** d
+** i
+** u
+** x
+** X
+** %
+*/

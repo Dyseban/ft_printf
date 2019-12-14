@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 13:27:03 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 13:15:54 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <stdio.h>
+# include "../libft/libft.h"
 
 # define HEXADECIMAL "0123456789abcdef"
 # define VALID_VALUE "cspdiuxX%"
@@ -38,15 +39,15 @@ int			define_type(char c);
 
 t_param		*parcing_param(const char *str, va_list args);
 
-char		*pf_fill_char(va_list args, char *output, t_param *param);
-char		*pf_fill_str(va_list args, char *output, t_param *param);
-char		*pf_fill_add(va_list args, char *output, t_param *param);
-char		*pf_fill_deci(va_list args, char *output, t_param *param);
-char		*pf_fill_int(va_list args, char *output, t_param *param);
-char		*pf_fill_unsi(va_list args, char *output, t_param *param);
-char		*pf_fill_hexa(va_list args, char *output, t_param *param);
-char		*pf_fill_hexa_caps(va_list args, char *output, t_param *param);
-char		*pf_fill_modulo(va_list args, char *output, t_param *param);
+int			pf_fill_char(va_list args, t_param *param);
+int			pf_fill_str(va_list args, t_param *param);
+int			pf_fill_add(va_list args, t_param *param);
+int			pf_fill_deci(va_list args, t_param *param);
+int			pf_fill_int(va_list args, t_param *param);
+int			pf_fill_unsi(va_list args, t_param *param);
+int			pf_fill_hexa(va_list args, t_param *param);
+int			pf_fill_hexa_caps(va_list args, t_param *param);
+int			pf_fill_modulo(va_list args, t_param *param);
 
 char		*fill_width_left(char *str, t_param *param);
 char		*fill_width_right(char *str, t_param *param);

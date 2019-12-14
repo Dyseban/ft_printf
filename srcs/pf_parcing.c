@@ -6,12 +6,11 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:16 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 14:10:13 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 09:59:32 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
 t_param		*set_put_param(void)
 {

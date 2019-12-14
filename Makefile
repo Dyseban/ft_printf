@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/14 09:56:08 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/14 12:57:16 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ SRCS = 	./srcs/ft_printf.c\
 		./srcs/pf_width.c\
 		./srcs/pf_precision.c
 OBJS = $(SRCS:.c=.o)
-INCLUDES = ./includes/ft_printf.h\
-			#./libft/libft.h
+LIB_OBJS = ./libft/*.o
+INCLUDES = ./includes/ft_printf.h
 LIB = ./libft/libft.a
 CFLAGS = -Wall -Wextra -Werror -g3
 LOGFILE=$(LOGPATH) `date +'%y.%m.%d %H:%M:%S'`
@@ -28,32 +28,31 @@ LOGFILE=$(LOGPATH) `date +'%y.%m.%d %H:%M:%S'`
 all : $(NAME)
 
 .c.o : $(SRCS)
-	gcc -c $(CFLAGS) -I $(INCLUDES) $^ -o $(^:.c=.o)
+	@(gcc -c $(CFLAGS) -I $(INCLUDES) $^ -o $(^:.c=.o))
 
 $(NAME) : $(OBJS)
 	@(make -C libft)
-	ar rcs $(NAME) $(OBJS)
+	@(ar rcs $(NAME) $(OBJS) $(LIB_OBJS))
+	@(echo "ft_printf compiled")
 
 ex : $(NAME)
-	@(gcc $(CFLAGS) $(LIB) $(NAME) srcs/main.c -I $(INCLUDES))
-	@(./a.out)
-
-f :
-	@(make -C libft)
-	@(gcc -g3 -fsanitize=address $(LIB) $(SRCS) -I $(INCLUDES))
+	@(gcc $(CFLAGS) $(NAME) srcs/main.c -I $(INCLUDES))
 	@(./a.out)
 
 clean :
-	rm -f $(OBJS)
-	rm -f a.out
+	@(rm -f $(OBJS))
+	@(make clean -C libft)
+	@(echo "ft_printf cleaned")
 
 cleanlib :
-	make fclean -C libft
+	@(make fclean -C libft)
 
 fclean : cleanlib clean
-	rm -rf $(NAME)
-	rm -f libft.a
-	rm -rf a.out.dSYM
+	@(rm -rf $(NAME))
+	@(rm -f libft.a)
+	@(rm -rf a.out.dSYM)
+	@(rm -f a.out)
+	@(echo "ft_printf full cleaned")
 
 git : fclean
 	git add *

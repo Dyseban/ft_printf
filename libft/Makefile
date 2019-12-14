@@ -6,7 +6,7 @@
 #    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/14 09:14:06 by thgermai         ###   ########.fr        #
+#    Updated: 2019/12/14 10:31:06 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,15 +72,18 @@ CFLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 
 .c.o : $(SRCS)
-	gcc -c $(CFLAGS) -I $(INCLUDES) $^ -o $(^:.c=.o)
+	@(gcc -c $(CFLAGS) -I $(INCLUDES) $^ -o $(^:.c=.o))
 
 $(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@(ar rcs $(NAME) $(OBJS))
+	@(echo "libft compiled")
 
 clean :
-	rm -f $(OBJS) $(INCLUDES:.h=.h.gch)
+	@(rm -f $(OBJS) $(INCLUDES:.h=.h.gch))
+	@(echo "libft cleaned")
 
 fclean : clean
-	rm -f $(NAME)
+	@(rm -f $(NAME))
+	@(echo "libft full cleaned")
 
 re : fclean all

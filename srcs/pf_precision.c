@@ -6,11 +6,10 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 09:23:27 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 13:54:49 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 09:59:53 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
 char			*fill_precision(char *str, t_param *param)

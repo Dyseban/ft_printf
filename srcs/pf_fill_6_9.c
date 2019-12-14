@@ -6,14 +6,13 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 13:18:38 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 13:40:01 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
-char		*pf_fill_unsi(va_list args, char *output, t_param *param)
+int				pf_fill_unsi(va_list args, t_param *param)
 {
 	unsigned int		i;
 	char				*num;
@@ -22,11 +21,18 @@ char		*pf_fill_unsi(va_list args, char *output, t_param *param)
 	num = ft_itoa_unsigned(i);
 	if (param->precision)
 		num = fill_precision(num, param);
-	free(param);
-	return (output = ft_strjoin_f12(output, num));
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			num = fill_width_left(num, param);
+		else
+			num = fill_width_right(num, param);
+	}
+	ft_putstr_fd(num, 1);
+	return (ft_exit(ft_strlen(num), 2, num, param));
 }
 
-char		*pf_fill_hexa(va_list args, char *output, t_param *param)
+int				pf_fill_hexa(va_list args, t_param *param)
 {
 	int		i;
 	char	*num;
@@ -35,29 +41,43 @@ char		*pf_fill_hexa(va_list args, char *output, t_param *param)
 	num = ft_itoa_base(i, HEXADECIMAL);
 	if (param->precision)
 		num = fill_precision(num, param);
-	free(param);
-	return (output = ft_strjoin_f12(output, num));
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			num = fill_width_left(num, param);
+		else
+			num = fill_width_right(num, param);
+	}
+	ft_putstr_fd(num, 1);
+	return (ft_exit(ft_strlen(num), 2, num, param));
 }
 
-char		*pf_fill_hexa_caps(va_list args, char *output, t_param *param)
+int				pf_fill_hexa_caps(va_list args, t_param *param)
 {
 	int		i;
-	char	*temp;
+	char	*num;
 
 	i = va_arg(args, int);
-	temp = ft_itoa_base(i, HEXADECIMAL);
+	num = ft_itoa_base(i, HEXADECIMAL);
 	i = -1;
-	while (temp[++i])
-		temp[i] = ft_toupper(temp[i]);
+	while (num[++i])
+		num[i] = ft_toupper(num[i]);
 	if (param->precision)
-		temp = fill_precision(temp, param);
-	free(param);
-	return (output = ft_strjoin_f12(output, temp));
+		num = fill_precision(num, param);
+	if (param->width)
+	{
+		if (param->justify == LEFT)
+			num = fill_width_left(num, param);
+		else
+			num = fill_width_right(num, param);
+	}
+	ft_putstr_fd(num, 1);
+	return (ft_exit(ft_strlen(num), 2, num, param));
 }
 
-char		*pf_fill_modulo(va_list args, char *output, t_param *param)
+int				pf_fill_modulo(va_list args, t_param *param)
 {
 	(void)args;
-	free(param);
-	return (output = ft_strjoin_f1(output, "%"));
+	ft_putstr_fd("%", 1);
+	return (ft_exit(1, 1, param));
 }

@@ -6,12 +6,11 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 11:20:40 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/08 13:52:13 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/14 13:41:03 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
 const char		*ft_refresh_str(const char *str)
 {
@@ -28,15 +27,12 @@ const char		*ft_refresh_str(const char *str)
 	return (str + next_arg);
 }
 
-char			*redict_type(va_list args, char *output, t_param *param)
+int			redict_type(va_list args, t_param *param)
 {
-	char *(*fptr[9])(va_list, char *, t_param *);
+	int		(*fptr[9])(va_list, t_param *);
 
 	if (param->specifier < 0)
-	{
-		free(param);
-		return (NULL);
-	}
+		return (ft_exit(-1, 1, param));
 	fptr[0] = &pf_fill_char;
 	fptr[1] = &pf_fill_str;
 	fptr[2] = &pf_fill_add;
@@ -46,7 +42,7 @@ char			*redict_type(va_list args, char *output, t_param *param)
 	fptr[6] = &pf_fill_hexa;
 	fptr[7] = &pf_fill_hexa_caps;
 	fptr[8] = &pf_fill_modulo;
-	return (output = (*fptr[param->specifier])(args, output, param));
+	return ((*fptr[param->specifier])(args, param));
 }
 
 int				ft_printf(const char *str, ...)
@@ -64,13 +60,12 @@ int				ft_printf(const char *str, ...)
 		if (!(output = ft_strjoin_f12(output,
 			ft_substr(str, 0, next_arg_index(str)))))
 			return (ft_exit(-1, 1, output));
+		i += ft_strlen(output);
+		ft_putstr_fd(output, 1);
 		if (str[next_arg_index(str)] == '%')
-			if (!(output = redict_type(args, output,
-				parcing_param(str + next_arg_index(str), args))))
-				return (ft_exit(-1, 1, output));
+			i += redict_type(args, parcing_param(str + next_arg_index(str), args));
 		str = ft_refresh_str(str);
 	}
-	ft_putstr_fd(output, 1);
 	va_end(args);
-	return (ft_exit(ft_strlen(output), 1, output));
+	return (ft_exit(i, 1, output));
 }
