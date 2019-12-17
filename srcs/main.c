@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 17:01:15 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/17 10:23:02 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,15 @@ int main(void)
 	//printf("\n|----		ft_print	----|\n\n");
 	////////////	test section	////////////
 
-	int ret = ft_printf("%.6i", -3);
-	printf("\n%d\n", ret);
+	printf("%.4i\n", -2456);
+	ft_printf("%.4i\n", -2456);
 
+	char *str = NULL;
+	printf("%19.8s\n", str);
+	ft_printf("%19.8s\n", str);
 
 	////////////	test section	////////////
-	//printf("\n\n|----		end		----|\n\n");
+	printf("\n\n|----		end		----|\n\n");
 	system("leaks a.out");
 	return (0);
 }

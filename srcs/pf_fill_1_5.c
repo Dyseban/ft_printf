@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_fill_1_5.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 17:17:01 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/17 10:27:50 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				pf_fill_char(va_list args, t_param *param)
 	ft_putstr_fd(str, 1);
 	return (ft_exit(ft_strlen(str), 2, str, param));
 }
-
+/* str a revoir je pense que j'etais bouteiller quand j'ai ecrit ca !! */
 int				pf_fill_str(va_list args, t_param *param)
 {
 	char	*str;
@@ -110,12 +110,14 @@ int				pf_fill_int(va_list args, t_param *param)
 	int				i;
 	char			*num;
 
-	i = va_arg(args, int);
-	num = ft_itoa(i);
-	if (num[0] == '-' && param->precision != -1)
-		num = ft_strjoin_f2("-", fill_precision(++num, param));
-	else if (param->precision != -1)
-		num = fill_precision(num, param);
+	num = ft_itoa(i = va_arg(args, int));
+	if (param->precision != -1)
+	{
+		if (num[0] == '-')
+			num = ft_strjoin("-", fill_precision(num + 1, param)); // leaks create here !!
+		else
+			num = fill_precision(num, param);
+	}
 	if (param->width)
 	{
 		if (param->justify == LEFT)

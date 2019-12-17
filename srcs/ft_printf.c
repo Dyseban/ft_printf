@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 11:20:40 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 16:15:06 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/17 10:30:33 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int			redict_type(va_list args, t_param *param)
 {
 	int		(*fptr[9])(va_list, t_param *);
 
+	if (!param)
+		return (-1);
 	if (param->specifier < 0)
 		return (ft_exit(-1, 1, param));
 	fptr[0] = &pf_fill_char;
