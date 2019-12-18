@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/17 10:23:02 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/18 12:10:19 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,19 +120,18 @@ void		test_add(void)
 
 int main(void)
 {
-	//printf("\n|----		ft_print	----|\n\n");
+	printf("\n|----		ft_print	----|\n\n");
 	////////////	test section	////////////
 
-	printf("%.4i\n", -2456);
-	ft_printf("%.4i\n", -2456);
 
-	char *str = NULL;
-	printf("%19.8s\n", str);
-	ft_printf("%19.8s\n", str);
+	printf("-- my printf --\n");
+	ft_printf("%.3s\n", "Hello");
+	printf("-- printf -- \n");
+	printf("%.3s\n", "Hello");
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
-	system("leaks a.out");
+	//system("leaks a.out");
 	return (0);
 }
 

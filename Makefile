@@ -6,7 +6,7 @@
 #    By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/17 09:53:13 by thomasgerma      ###   ########.fr        #
+#    Updated: 2019/12/18 12:09:11 by thomasgerma      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,10 @@ $(NAME) : $(OBJS)
 
 ex : $(NAME)
 	@(gcc $(CFLAGS) $(NAME) srcs/main.c -I $(INCLUDES))
+	@(./a.out)
+
+f : $(NAME)
+	@(gcc $(CFLAGS) -fsanitize=address $(NAME) srcs/main.c -I $(INCLUDES))
 	@(./a.out)
 
 clean :
