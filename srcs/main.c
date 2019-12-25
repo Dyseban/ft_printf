@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/18 12:10:19 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/25 16:41:21 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,55 @@ int main(void)
 	printf("\n|----		ft_print	----|\n\n");
 	////////////	test section	////////////
 
+	ft_printf("%i\n", 12);
+	printf("%i\n", 12);
+	printf("-------------\n");
+	ft_printf("%i\n", -12);
+	printf("%i\n", -12);
+	printf("-------------\n");
+	ft_printf("%i\n", -12421);
+	printf("%i\n", -12421);
+	printf("-------------\n");
+	ft_printf("%10i\n", 12);
+	printf("%10i\n", 12);
+	printf("-------------\n");
+	ft_printf("%-10i\n", 12);
+	printf("%-10i\n", 12);
+	printf("-------------\n");
+	ft_printf("%010i\n", 12);
+	printf("%010i\n", 12);
+	printf("-------------\n");
+	ft_printf("%5i\n", 12421421);
+	printf("%5i\n", 12421421);
+	printf("-------------\n");
+	ft_printf("%-5i\n", 12421421);
+	printf("%-5i\n", 12421421);
+	printf("-------------\n");
+	ft_printf("%05i\n", 12421421);
+	printf("%05i\n", 12421421);
+	printf("-------------\n");
+	ft_printf("%05i\n", 12421421);
+	printf("%05i\n", 12421421);
+	printf("-------------\n");
+	ft_printf("%.8i\n", 124);
+	printf("%.8i\n", 124);
+	printf("-------------\n");
+	ft_printf("%.8i\n", 124124124);
+	printf("%.8i\n", 124124124);
+	printf("-------------\n");
+	ft_printf("%.8i\n", -124);
+	printf("%.8i\n", -124);
+	printf("-------------\n");
+	ft_printf("%.8i\n", -124124124);
+	printf("%.8i\n", -124124124);
+	printf("-------------\n");
+	ft_printf("%10.8i\n", 124);
+	printf("%10.8i\n", 124);
+	printf("-------------\n");
+	ft_printf("%10.8i\n", 124124124);
+	printf("%10.8i\n", 124124124);
+	printf("-------------\n");
 
-	printf("-- my printf --\n");
-	ft_printf("%.3s\n", "Hello");
-	printf("-- printf -- \n");
-	printf("%.3s\n", "Hello");
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");

@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/18 12:05:46 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/25 17:15:40 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int				pf_fill_str(va_list args, t_param *param)
 		temp = ft_strdup(str);
 		free(str);
 	}
+	else if (!param->precision)
+		temp = ft_strdup("");
 	else
 		temp = ft_strdup(str);
 	if (param->width)
@@ -66,13 +68,19 @@ int				pf_fill_add(va_list args, t_param *param)
 
 	ptr = va_arg(args, void *);
 	if (!ptr)
+		result = ft_strdup("0");
+	else
+		result = ft_itoa_address((unsigned long long int)ptr);
+	if (param->precision != -1 && param->precision)
 	{
-		ft_putstr_fd("0x0", 1);
-		return (ft_exit(3, 1, param));
-	}
-	result = ft_itoa_address((unsigned long long int)ptr);
-	if (param->precision != -1)
 		result = fill_precision(result, param);
+		param->fill = ' ';
+	}
+	else if (param->precision == 0)
+	{
+		free(result);
+		result = ft_strdup("");
+	}
 	result = ft_strjoin_f2("0x", result);
 	if (param->width)
 	{
@@ -137,7 +145,7 @@ int				pf_fill_int(va_list args, t_param *param)
 
 	temp = NULL;
 	if (param->precision != 0)
-		num = ft_itoa((i = va_arg(args, int)));
+		num = ft_itoa((i = va_arg(args, int))); /* attention je n'avance pas dans la liste ici */
 	else
 		num = ft_strdup("");
 	if (param->precision != -1)

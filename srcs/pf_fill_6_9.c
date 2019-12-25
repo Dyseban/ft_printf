@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_fill_6_9.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 16:30:01 by thgermai         ###   ########.fr       */
+/*   Updated: 2019/12/25 17:06:34 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@ int				pf_fill_unsi(va_list args, t_param *param)
 	char				*num;
 
 	i = va_arg(args, unsigned int);
-	num = ft_itoa_unsigned(i);
+	if (param->precision)
+		num = ft_itoa_unsigned(i);
+	else
+		num = ft_strdup("");
 	if (param->precision != -1)
+	{
 		num = fill_precision(num, param);
+		param->fill = ' ';
+	}
 	if (param->width)
 	{
 		if (param->justify == LEFT)
@@ -38,9 +44,15 @@ int				pf_fill_hexa(va_list args, t_param *param)
 	char	*num;
 
 	i = va_arg(args, int);
-	num = ft_itoa_base(i, HEXADECIMAL);
+	if (param->precision)
+		num = ft_itoa_base(i, HEXADECIMAL);
+	else
+		num = ft_strdup("");
 	if (param->precision != -1)
+	{
 		num = fill_precision(num, param);
+		param->fill = ' ';
+	}
 	if (param->width)
 	{
 		if (param->justify == LEFT)
@@ -58,12 +70,20 @@ int				pf_fill_hexa_caps(va_list args, t_param *param)
 	char	*num;
 
 	i = va_arg(args, int);
-	num = ft_itoa_base(i, HEXADECIMAL);
-	i = -1;
-	while (num[++i])
-		num[i] = ft_toupper(num[i]);
+	if (param->precision)
+	{
+		num = ft_itoa_base(i, HEXADECIMAL);
+		i = -1;
+		while (num[++i])
+			num[i] = ft_toupper(num[i]);
+	}
+	else
+		num = ft_strdup("");
 	if (param->precision != -1)
+	{
 		num = fill_precision(num, param);
+		param->fill = ' ';
+	}
 	if (param->width)
 	{
 		if (param->justify == LEFT)
