@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/25 17:15:40 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/26 16:31:58 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@ int				pf_fill_char(va_list args, t_param *param)
 	char	c;
 	char	*str;
 
-	if (!(str = malloc(sizeof(char) * 2)))
-		return (ft_exit(-1, 1, param));
 	c = va_arg(args, int);
-	str[0] = c;
-	str[1] = '\0';
+	if (c)
+	{
+		if (!(str = malloc(sizeof(char) * 2)))
+			return (ft_exit(-1, 1, param));
+		str[0] = c;
+		str[1] = '\0';
+	}
+	else
+		str = ft_strdup("\x00");
 	if (param->width)
 	{
 		if (param->justify == LEFT)
@@ -82,13 +87,7 @@ int				pf_fill_add(va_list args, t_param *param)
 		result = ft_strdup("");
 	}
 	result = ft_strjoin_f2("0x", result);
-	if (param->width)
-	{
-		if (param->justify == LEFT)
-			result = fill_width_left(result, param);
-		else
-			result = fill_width_right(result, param);
-	}
+	result = check_width_num(result, param);
 	ft_putstr_fd(result, 1);
 	return (ft_exit(ft_strlen(result), 2, result, param));
 }
@@ -100,39 +99,17 @@ int				pf_fill_deci(va_list args, t_param *param)
 	char	*temp;
 
 	temp = NULL;
+	i = va_arg(args, int);
 	if (param->precision != 0)
-		num = ft_itoa((i = va_arg(args, int)));
+		num = ft_itoa(i);
 	else
 		num = ft_strdup("");
 	if (param->precision != -1)
 	{
-		if (num[0] == '-')
-		{
-			temp = ft_strdup(num + 1);
-			free(num);
-			num = ft_strjoin_f2("-", fill_precision(temp, param));
-		}
-		else
-			num = fill_precision(num, param);
+		num = check_precision_num(num, param);
 		param->fill = ' ';
 	}
-	if (param->width)
-	{
-		if (num[0] == '-' && param->fill == '0')
-		{
-			temp = ft_strdup(num + 1);
-			free(num);
-			param->width--;
-			if (param->justify == LEFT)
-				num = ft_strjoin_f2("-", fill_width_left(temp, param));
-			else
-				num = ft_strjoin_f2("-", fill_width_right(temp, param));
-		}
-		else if (param->justify == LEFT)
-			num = fill_width_left(num, param);
-		else
-			num = fill_width_right(num, param);
-	}
+	num = check_width_num(num, param);
 	ft_putstr_fd(num, 1);
 	return (ft_exit(ft_strlen(num), 2, num, param));
 }
@@ -144,39 +121,17 @@ int				pf_fill_int(va_list args, t_param *param)
 	char	*temp;
 
 	temp = NULL;
+	i = va_arg(args, int);
 	if (param->precision != 0)
-		num = ft_itoa((i = va_arg(args, int))); /* attention je n'avance pas dans la liste ici */
+		num = ft_itoa(i);
 	else
 		num = ft_strdup("");
 	if (param->precision != -1)
 	{
-		if (num[0] == '-')
-		{
-			temp = ft_strdup(num + 1);
-			free(num);
-			num = ft_strjoin_f2("-", fill_precision(temp, param));
-		}
-		else
-			num = fill_precision(num, param);
+		num = check_precision_num(num, param);
 		param->fill = ' ';
 	}
-	if (param->width)
-	{
-		if (num[0] == '-' && param->fill == '0')
-		{
-			temp = ft_strdup(num + 1);
-			free(num);
-			param->width--;
-			if (param->justify == LEFT)
-				num = ft_strjoin_f2("-", fill_width_left(temp, param));
-			else
-				num = ft_strjoin_f2("-", fill_width_right(temp, param));
-		}
-		else if (param->justify == LEFT)
-			num = fill_width_left(num, param);
-		else
-			num = fill_width_right(num, param);
-	}
+	num = check_width_num(num, param);
 	ft_putstr_fd(num, 1);
 	return (ft_exit(ft_strlen(num), 2, num, param));
 }
