@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/26 16:19:57 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/28 19:14:24 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,19 @@ void		test_add(void)
 	printf("--- FINISHED TESTING ADD ---\n");
 }
 
-
 int main(void)
 {
 	printf("\n|----		ft_print	----|\n\n");
 	////////////	test section	////////////
 
+	ft_printf("%*i-|\n\n\n", -12, 1252);
+	ft_printf("%0*i-|\n", -7, -54);
+
+	//printf("%*i-|\n", -12, 1252);
+
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
-	system("leaks a.out");
+	//system("leaks a.out");
 	return (0);
 }
 

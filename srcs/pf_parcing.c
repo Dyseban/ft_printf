@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:16 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/25 16:53:06 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/28 19:15:05 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,18 @@ int			get_value(va_list args)
 	int		value;
 
 	value = va_arg(args, int);
-	if (value == -1)
-		return (-1);
 	return (value);
 }
-
+/* a supprimer */
+void	print_param(t_param *param)
+{
+	printf("specifier : %i\n", param->specifier);
+	printf("fill : |-%c-|\n", param->fill);
+	printf("justify : %i\n", param->justify);
+	printf("width : %i\n", param->width);
+	printf("precision : %i\n", param->precision);
+}
+/* ------------ */
 void		assigning_param(const char *str, t_param **param, va_list args)
 {
 	char		*flags;
@@ -66,6 +73,19 @@ void		assigning_param(const char *str, t_param **param, va_list args)
 	(*param)->specifier = define_type(*str);
 }
 
+void		verify_param(t_param **param)
+{
+	if ((*param)->width < 0)
+	{
+		(*param)->width *= -1;
+		(*param)->justify = LEFT;
+	}
+	if ((*param)->precision < 0)
+		(*param)->precision = -1;
+	if ((*param)->fill == '0' && (*param)->justify == LEFT)
+		(*param)->fill = ' ';
+}
+
 t_param		*parcing_param(const char *str, va_list args)
 {
 	t_param		*param;
@@ -76,8 +96,7 @@ t_param		*parcing_param(const char *str, va_list args)
 		return (NULL);
 	str++;
 	assigning_param(str, &param, args);
-	if (param->fill == '0' && param->justify == LEFT)
-		param->fill = ' ';
-	//printf("precision : %d\nwidth : %d\njustify : %d\nfill : %d\nspecifier : %d\n",param->precision, param->width, param->justify, param->fill, param->specifier);
+	verify_param(&param);
+	//print_param(param);
 	return (param);
 }
