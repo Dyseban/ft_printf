@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 11:20:40 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/28 18:49:08 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/29 16:49:23 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				ft_printf(const char *str, ...)
 		ft_putstr_fd(output, 1);
 		if (str[next_arg_index(str)] == '%')
 		{
-			j = redict_type(args, parcing_param(str + next_arg_index(str), args));
+			j = redict_type(args, parsing_param(str + next_arg_index(str), args));
 			if (j == -1)
 			{
 				va_end(args);

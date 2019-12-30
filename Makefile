@@ -6,7 +6,7 @@
 #    By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/18 12:09:11 by thomasgerma      ###   ########.fr        #
+#    Updated: 2019/12/29 16:50:02 by thomasgerma      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = 	./srcs/ft_printf.c\
 		./srcs/pf_arg.c\
 		./srcs/pf_fill_1_5.c\
 		./srcs/pf_fill_6_9.c\
-		./srcs/pf_parcing.c\
+		./srcs/pf_parsing.c\
 		./srcs/pf_width.c\
 		./srcs/pf_precision.c
 OBJS = $(SRCS:.c=.o)

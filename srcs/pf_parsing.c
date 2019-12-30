@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_parcing.c                                       :+:      :+:    :+:   */
+/*   pf_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:16 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/28 19:15:05 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/30 16:18:25 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		assigning_param(const char *str, t_param **param, va_list args)
 				(*param)->precision = get_value(args);
 			else
 				(*param)->precision = ft_atoi(str + 1);
-			while (ft_isdigit(*(str + 1)))
+			while (ft_isdigit(*(str + 1)) || (*(str + 1)) == '*')
 				str++;
 		}
 		else if (*str == '0' && !(*param)->width)
@@ -86,7 +86,7 @@ void		verify_param(t_param **param)
 		(*param)->fill = ' ';
 }
 
-t_param		*parcing_param(const char *str, va_list args)
+t_param		*parsing_param(const char *str, va_list args)
 {
 	t_param		*param;
 

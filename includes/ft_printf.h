@@ -6,7 +6,7 @@
 /*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 11:15:05 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/26 16:16:37 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2019/12/29 16:49:31 by thomasgerma      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			next_arg_index(const char *str);
 const char	*ft_refresh_str(const char *str);
 int			define_type(char c);
 
-t_param		*parcing_param(const char *str, va_list args);
+t_param		*parsing_param(const char *str, va_list args);
 
 int			pf_fill_char(va_list args, t_param *param);
 int			pf_fill_str(va_list args, t_param *param);
