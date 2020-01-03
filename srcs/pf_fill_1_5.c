@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 11:07:57 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/03 16:40:27 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ int				pf_fill_add(va_list args, t_param *param)
 	char	*result;
 
 	ptr = va_arg(args, void *);
-	if (!ptr)
+	if (!param->precision)
+		result = ft_strdup("");
+	else if (!ptr)
 		result = ft_strdup("0");
 	else
 		result = ft_itoa_address((unsigned long long int)ptr);
@@ -81,11 +83,6 @@ int				pf_fill_add(va_list args, t_param *param)
 	{
 		result = fill_precision(result, param);
 		param->fill = ' ';
-	}
-	else if (param->precision == 0)
-	{
-		free(result);
-		result = ft_strdup("");
 	}
 	result = ft_strjoin_f2("0x", result);
 	result = check_width_num(result, param);
@@ -97,11 +94,9 @@ int				pf_fill_deci(va_list args, t_param *param)
 {
 	int		i;
 	char	*num;
-	char	*temp;
 
-	temp = NULL;
 	i = va_arg(args, int);
-	if (param->precision != 0)
+	if (param->precision)
 		num = ft_itoa(i);
 	else
 		num = ft_strdup("");
@@ -119,11 +114,9 @@ int				pf_fill_int(va_list args, t_param *param)
 {
 	int		i;
 	char	*num;
-	char	*temp;
 
-	temp = NULL;
 	i = va_arg(args, int);
-	if (param->precision != 0)
+	if (param->precision)
 		num = ft_itoa(i);
 	else
 		num = ft_strdup("");

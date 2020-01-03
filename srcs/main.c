@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 11:07:35 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/03 17:12:21 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,6 @@ int main(void)
 {
 	printf("\n|----		ft_print	----|\n\n");
 	////////////	test section	////////////
-
-	int ret = ft_printf("%12.5o\n", "coucou");
-	printf("%i\n", ret);
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
