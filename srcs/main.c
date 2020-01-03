@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/28 20:27:21 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2020/01/03 08:47:35 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ int main(void)
 	printf("\n|----		ft_print	----|\n\n");
 	////////////	test section	////////////
 
-	ft_printf("%.*s", -3, "hello");
+	ft_printf("%012X\n", -156);
+	printf("%012X\n", -156);
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");

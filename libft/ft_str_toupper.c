@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_arg.c                                           :+:      :+:    :+:   */
+/*   ft_str_toupper.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 19:34:40 by thomasgerma       #+#    #+#             */
-/*   Updated: 2020/01/03 08:42:33 by thgermai         ###   ########.fr       */
+/*   Created: 2020/01/03 08:56:44 by thgermai          #+#    #+#             */
+/*   Updated: 2020/01/03 09:02:25 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
-int			define_type(char c)
+char	*ft_str_toupper(char *str)
 {
-	int		i;
-	char	*value;
+	int	i;
 
 	i = 0;
-	value = ft_strdup(VALID_VALUE);
-	while (value[i] && value[i] != c)
-		i++;
-	if (value[i])
-		return (ft_exit(i, 1, value));
-	return (ft_exit(-1, 1, value));
-}
-
-int			next_arg_index(const char *str)
-{
-	int		i;
-
-	i = 0;
-	while (*str)
+	while (str[i])
 	{
-		if (*str == '%')
-			return (i);
-		str++;
+		str[i] = ft_toupper(str[i]);
 		i++;
 	}
-	return (i);
+	return (str);
 }

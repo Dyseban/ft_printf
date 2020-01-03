@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_fill_1_5.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/28 18:55:35 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2020/01/03 08:39:25 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,32 @@
 int				pf_fill_char(va_list args, t_param *param)
 {
 	char	c;
-	char	*str;
+	char	*temp;
 
 	c = va_arg(args, int);
-	if (c)
-	{
-		if (!(str = malloc(sizeof(char) * 2)))
-			return (ft_exit(-1, 1, param));
-		str[0] = c;
-		str[1] = '\0';
-	}
-	else
-		str = ft_strdup("\x00");
+	if (!(temp = ft_calloc(1, 1)))
+		return (ft_exit(-1, 1, param));
 	if (param->width)
 	{
+		param->width--;
 		if (param->justify == LEFT)
-			str = fill_width_left(str, param);
+		{
+			temp = fill_width_left(temp, param);
+			write(1, &c, 1);
+			ft_putstr_fd(temp, 1);
+		}
 		else
-			str = fill_width_right(str, param);
+		{
+			temp = fill_width_right(temp, param);
+			ft_putstr_fd(temp, 1);
+			write(1, &c, 1);
+		}
 	}
-	ft_putstr_fd(str, 1);
-	return (ft_exit(ft_strlen(str), 2, str, param));
+	else
+		write(1, &c, 1);
+	return (ft_exit(param->width + 1, 2, temp, param));
 }
-/* str a revoir je pense que j'etais bouteiller quand j'ai ecrit ca !! */
+
 int				pf_fill_str(va_list args, t_param *param)
 {
 	char	*str;
@@ -45,12 +48,10 @@ int				pf_fill_str(va_list args, t_param *param)
 
 	if (!(str = va_arg(args, char *)))
 		str = ft_strdup("(null)");
+	else
+		str = ft_strdup(str);
 	if (param->precision != -1 && param->precision < (int)ft_strlen(str))
-	{
-		str = ft_substr(str, 0, param->precision);
-		temp = ft_strdup(str);
-		free(str);
-	}
+		temp = ft_substr(str, 0, param->precision);
 	else if (!param->precision)
 		temp = ft_strdup("");
 	else
@@ -63,13 +64,13 @@ int				pf_fill_str(va_list args, t_param *param)
 			temp = fill_width_right(temp, param);
 	}
 	ft_putstr_fd(temp, 1);
-	return (ft_exit(ft_strlen(temp), 2, temp, param));
+	return (ft_exit(ft_strlen(temp), 3, str, temp, param));
 }
 
 int				pf_fill_add(va_list args, t_param *param)
 {
-	void					*ptr;
-	char					*result;
+	void	*ptr;
+	char	*result;
 
 	ptr = va_arg(args, void *);
 	if (!ptr)

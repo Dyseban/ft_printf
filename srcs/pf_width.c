@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 13:37:50 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/26 16:01:58 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2020/01/03 07:51:13 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ char		*fill_width_left(char *str, t_param *param)
 
 char		*check_width_num(char *str, t_param *param)
 {
-	char *num;
-	char *temp;
+	char	*num;
+	char	*temp;
 
 	if (!param->width)
 		return (str);

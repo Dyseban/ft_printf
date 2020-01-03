@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_fill_6_9.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 14:17:36 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/26 16:06:40 by thomasgerma      ###   ########.fr       */
+/*   Created: 2020/01/03 08:43:13 by thgermai          #+#    #+#             */
+/*   Updated: 2020/01/03 09:09:46 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,7 @@ int				pf_fill_hexa_caps(va_list args, t_param *param)
 
 	i = va_arg(args, int);
 	if (param->precision)
-	{
-		num = ft_itoa_base(i, HEXADECIMAL);
-		i = -1;
-		while (num[++i])
-			num[i] = ft_toupper(num[i]);
-	}
+		num = ft_str_toupper(ft_itoa_base(i, HEXADECIMAL));
 	else
 		num = ft_strdup("");
 	if (param->precision != -1)

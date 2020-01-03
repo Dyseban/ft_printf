@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+         #
+#    By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 14:34:05 by thgermai          #+#    #+#              #
-#    Updated: 2019/12/29 16:50:02 by thomasgerma      ###   ########.fr        #
+#    Updated: 2020/01/03 08:01:21 by thgermai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,6 @@ $(NAME) : $(OBJS)
 
 ex : $(NAME)
 	@(gcc $(CFLAGS) $(NAME) srcs/main.c -I $(INCLUDES))
-	@(./a.out)
-
-f : $(NAME)
-	@(gcc $(CFLAGS) -fsanitize=address $(NAME) srcs/main.c -I $(INCLUDES))
 	@(./a.out)
 
 clean :

@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:28:33 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/14 10:52:36 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/03 09:09:25 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int					ft_atoi(const char *str);
 int					get_next_line(int fd, char **line);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_str_toupper(char *str);
+char				*ft_str_tolower(char *str);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strjoin_f12(char const *s1, char const *s2);
 char				*ft_strjoin_f1(char const *s1, char const *s2);
