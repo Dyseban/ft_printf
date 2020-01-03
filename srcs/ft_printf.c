@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 08:41:57 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 08:42:01 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/03 11:21:34 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ const char		*ft_refresh_str(const char *str)
 	return (str + next_arg);
 }
 
-int			redict_type(va_list args, t_param *param)
+int				redict_type(va_list args, t_param *param)
 {
 	int		(*fptr[9])(va_list, t_param *);
 
@@ -47,37 +47,41 @@ int			redict_type(va_list args, t_param *param)
 	return ((*fptr[param->specifier])(args, param));
 }
 
+int				print_str(const char *str, int i)
+{
+	char		*output;
+
+	if (!(output = ft_substr(str, 0, next_arg_index(str))))
+		return (ft_exit(-1, 0));
+	ft_putstr_fd(output, 1);
+	return (ft_exit(i + ft_strlen(output), 1, output));
+}
+
 int				ft_printf(const char *str, ...)
 {
 	va_list		args;
-	char		*output;
 	int			i;
-	int			j;
+	int			ret;
 
-	j = 0;
 	i = 0;
-	output = NULL;
+	ret = 0;
 	va_start(args, str);
 	while (*str)
 	{
-		if (output)
-			free(output);
-		if (!(output = ft_substr(str, 0, next_arg_index(str))))
-			return (ft_exit(-1, 0));
-		i += ft_strlen(output);
-		ft_putstr_fd(output, 1);
+		if ((i = print_str(str, i)) == -1)
+			break ;
 		if (str[next_arg_index(str)] == '%')
 		{
-			j = redict_type(args, parsing_param(str + next_arg_index(str), args));
-			if (j == -1)
+			if ((ret = redict_type(args, parsing_param(str +
+				next_arg_index(str), args))) == -1)
 			{
-				va_end(args);
-				return (ft_exit(i, 1, output));
+				i = -1;
+				break ;
 			}
-			i += j;
+			i += ret;
 		}
 		str = ft_refresh_str(str);
 	}
 	va_end(args);
-	return (ft_exit(i, 1, output));
+	return (ft_exit(i, 0));
 }

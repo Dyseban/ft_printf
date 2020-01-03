@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:16 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/30 16:18:25 by thomasgerma      ###   ########.fr       */
+/*   Updated: 2020/01/03 09:31:51 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,10 @@ int			get_value(va_list args)
 	value = va_arg(args, int);
 	return (value);
 }
-/* a supprimer */
-void	print_param(t_param *param)
-{
-	printf("specifier : %i\n", param->specifier);
-	printf("fill : |-%c-|\n", param->fill);
-	printf("justify : %i\n", param->justify);
-	printf("width : %i\n", param->width);
-	printf("precision : %i\n", param->precision);
-}
-/* ------------ */
+
 void		assigning_param(const char *str, t_param **param, va_list args)
 {
-	char		*flags;
-
-	flags = ft_strdup(VALID_FLAGS);
-	while (ft_find_in(flags, *str) || ft_isdigit(*str))
+	while (ft_find_in(VALID_FLAGS, *str) || ft_isdigit(*str))
 	{
 		if (*str == '-')
 			(*param)->justify = LEFT;
@@ -69,7 +57,6 @@ void		assigning_param(const char *str, t_param **param, va_list args)
 			(*param)->width = ft_atoi(str);
 		str++;
 	}
-	free(flags);
 	(*param)->specifier = define_type(*str);
 }
 
@@ -97,6 +84,5 @@ t_param		*parsing_param(const char *str, va_list args)
 	str++;
 	assigning_param(str, &param, args);
 	verify_param(&param);
-	//print_param(param);
 	return (param);
 }

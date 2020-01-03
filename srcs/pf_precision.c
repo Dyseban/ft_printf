@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_precision.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasgermain <thomasgermain@student.42    +#+  +:+       +#+        */
+/*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/08 09:23:27 by thgermai          #+#    #+#             */
-/*   Updated: 2019/12/26 16:17:18 by thomasgerma      ###   ########.fr       */
+/*   Created: 2020/01/03 09:26:21 by thgermai          #+#    #+#             */
+/*   Updated: 2020/01/03 09:26:40 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char			*fill_precision(char *str, t_param *param)
 
 	if ((int)ft_strlen(str) >= param->precision)
 		return (str);
-	if (!(temp = malloc(sizeof(char) * (param->precision - ft_strlen(str) + 1))))
+	if (!(temp = malloc(sizeof(char) *
+		(param->precision - ft_strlen(str) + 1))))
 		return (NULL);
 	ft_memset(temp, '0', param->precision - ft_strlen(str));
 	temp[param->precision - ft_strlen(str)] = '\0';
