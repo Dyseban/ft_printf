@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 08:41:57 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 15:29:28 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/04 08:08:39 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				redict_type(va_list args, t_param *param)
 	int		(*fptr[9])(va_list, t_param *);
 
 	if (!param)
-		return (-1);
+		return (ft_exit(-1, 0));
 	if (param->specifier < 0)
 		return (ft_exit(-1, 1, param));
 	fptr[0] = &pf_fill_char;

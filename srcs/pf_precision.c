@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 09:26:21 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 09:26:40 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/04 08:23:19 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char			*fill_precision(char *str, t_param *param)
 	if ((int)ft_strlen(str) >= param->precision)
 		return (str);
 	if (!(temp = malloc(sizeof(char) *
-		(param->precision - ft_strlen(str) + 1))))
+		(param->precision - ft_strlen(str)))))
 		return (NULL);
 	ft_memset(temp, '0', param->precision - ft_strlen(str));
 	temp[param->precision - ft_strlen(str)] = '\0';

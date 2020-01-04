@@ -6,13 +6,13 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:16 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 09:31:51 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/04 08:07:24 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_param		*set_put_param(void)
+t_param		*set_ut_param(void)
 {
 	t_param *param;
 
@@ -79,7 +79,7 @@ t_param		*parsing_param(const char *str, va_list args)
 
 	if (*str != '%')
 		return (NULL);
-	if (!(param = set_put_param()))
+	if (!(param = set_ut_param()))
 		return (NULL);
 	str++;
 	assigning_param(str, &param, args);

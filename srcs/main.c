@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 17:12:21 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/04 08:34:51 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ int main(void)
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");
-	//system("leaks a.out");
+	system("leaks a.out");
 	return (0);
 }
