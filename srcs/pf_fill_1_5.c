@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:13:41 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 16:40:27 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/05 09:07:35 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,12 @@ int				pf_fill_deci(va_list args, t_param *param)
 	int		i;
 	char	*num;
 
-	i = va_arg(args, int);
-	if (param->precision)
+	if ((i = va_arg(args, int)))
 		num = ft_itoa(i);
-	else
+	else if (!i && !param->precision)
 		num = ft_strdup("");
+	else
+		num = ft_itoa(0);
 	if (param->precision != -1)
 	{
 		num = check_precision_num(num, param);
@@ -115,11 +116,12 @@ int				pf_fill_int(va_list args, t_param *param)
 	int		i;
 	char	*num;
 
-	i = va_arg(args, int);
-	if (param->precision)
+	if ((i = va_arg(args, int)))
 		num = ft_itoa(i);
-	else
+	else if (!i && !param->precision)
 		num = ft_strdup("");
+	else
+		num = ft_itoa(0);
 	if (param->precision != -1)
 	{
 		num = check_precision_num(num, param);

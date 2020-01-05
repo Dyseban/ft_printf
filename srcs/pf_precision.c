@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 09:26:21 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/04 08:23:19 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/05 08:57:18 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,18 @@ char			*fill_precision(char *str, t_param *param)
 char			*check_precision_num(char *str, t_param *param)
 {
 	char *temp;
-	char *num;
 
-	num = ft_strdup(str);
-	free(str);
 	temp = NULL;
 	if (param->precision != -1)
 	{
-		if (num[0] == '-')
+		if (str[0] == '-')
 		{
-			temp = ft_strdup(num + 1);
-			free(num);
-			num = ft_strjoin_f2("-", fill_precision(temp, param));
+			temp = ft_strdup(str + 1);
+			free(str);
+			str = ft_strjoin_f2("-", fill_precision(temp, param));
 		}
 		else
-			num = fill_precision(num, param);
+			str = fill_precision(str, param);
 	}
-	return (num);
+	return (str);
 }

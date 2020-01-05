@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:34:43 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/04 08:34:51 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/05 09:17:53 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,37 @@ int main(void)
 {
 	printf("\n|----		ft_print	----|\n\n");
 	////////////	test section	////////////
+	printf("Positive Value : \n\n");
+	ft_printf(".0d : 0 -> %.0x\n", 0);
+	printf(".0d : 0 -> %.0x\n\n", 0);
+	ft_printf(".0d : 1 -> %.0x\n", 1);
+	printf(".0d : 1 -> %.0x\n\n", 1);
+	ft_printf(".2d : 12345 -> %.2x\n", 12345);
+	printf(".2d : 12345 -> %.2x\n\n", 12345);
+	ft_printf(".0d : 12 -> %.0x\n", 12);
+	printf(".0d : 12 -> %.0x\n\n", 12);
+	ft_printf(".0d : 0 -> %.0x\n", 0);
+	printf(".0d : 0 -> %.0x\n\n", 0);
+	ft_printf(".2d : 12 -> %.2x\n", 12);
+	printf(".2d : 12 -> %.2x\n\n", 12);
+	ft_printf(".5d : 12 -> %.5x\n", 12);
+	printf(".5d : 12 -> %.5x\n\n", 12);
+
+	printf("Negative Value : \n\n");
+	ft_printf(".0d : 0 -> %.0x\n", -0);
+	printf(".0d : 0 -> %.0x\n\n", -0);
+	ft_printf(".0d : 1 -> %.0x\n", -1);
+	printf(".0d : 1 -> %.0x\n\n", -1);
+	ft_printf(".2d : 12345 -> %.2x\n", -12345);
+	printf(".2d : 12345 -> %.2x\n\n", -12345);
+	ft_printf(".0d : 12 -> %.0x\n", -12);
+	printf(".0d : 12 -> %.0x\n\n", -12);
+	ft_printf(".0d : 0 -> %.0x\n", -0);
+	printf(".0d : 0 -> %.0x\n\n", -0);
+	ft_printf(".2d : 12 -> %.2x\n", -12);
+	printf(".2d : 12 -> %.2x\n\n", -12);
+	ft_printf(".5d : 12 -> %.5x\n", -12);
+	printf(".5d : 12 -> %.5x\n\n", -12);
 
 	////////////	test section	////////////
 	printf("\n\n|----		end		----|\n\n");

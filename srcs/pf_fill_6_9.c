@@ -6,7 +6,7 @@
 /*   By: thgermai <thgermai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 08:43:13 by thgermai          #+#    #+#             */
-/*   Updated: 2020/01/03 15:29:21 by thgermai         ###   ########.fr       */
+/*   Updated: 2020/01/05 09:15:27 by thgermai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ int				pf_fill_unsi(va_list args, t_param *param)
 	unsigned int		i;
 	char				*num;
 
-	i = va_arg(args, unsigned int);
-	if (param->precision)
+	if ((i = va_arg(args, unsigned int)))
 		num = ft_itoa_unsigned(i);
-	else
+	else if (!i && !param->precision)
 		num = ft_strdup("");
+	else
+		num = ft_itoa(0);
 	if (param->precision != -1)
 	{
 		num = fill_precision(num, param);
@@ -37,11 +38,12 @@ int				pf_fill_hexa(va_list args, t_param *param)
 	int		i;
 	char	*num;
 
-	i = va_arg(args, int);
-	if (param->precision)
+	if ((i = va_arg(args, int)))
 		num = ft_itoa_base(i, HEXADECIMAL);
-	else
+	else if (!i && !param->precision)
 		num = ft_strdup("");
+	else
+		num = ft_itoa(0);
 	if (param->precision != -1)
 	{
 		num = fill_precision(num, param);
@@ -63,11 +65,12 @@ int				pf_fill_hexa_caps(va_list args, t_param *param)
 	int		i;
 	char	*num;
 
-	i = va_arg(args, int);
-	if (param->precision)
+	if ((i = va_arg(args, int)))
 		num = ft_str_toupper(ft_itoa_base(i, HEXADECIMAL));
-	else
+	else if (!i && !param->precision)
 		num = ft_strdup("");
+	else
+		num = ft_itoa(0);
 	if (param->precision != -1)
 	{
 		num = fill_precision(num, param);
